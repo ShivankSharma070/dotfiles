@@ -1,0 +1,19 @@
+
+font-family = JetBrains Mono 
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance =true 
+shell-integration-features = no-cursor
+cursor-style=block
+adjust-cell-height=-3
+confirm-close-surface = false
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = true
+mouse-hide-while-typing = true
+font-size = 10
+font-style = Regular 
+# theme = catppuccin-mocha
+theme = /home/shivank/.config/ghostty/ghostty-theme
+# theme =Solarized Dark Higher Contrast 
+background-opacity = 0.9
