@@ -19,8 +19,8 @@ alias emacs="emacsclient -c -a 'emacs'"
 alias cat="bat" # using bat instaed of cat
 alias v="nvim"
 alias c="clear"
-
-
+alias ls="error" # To get rid of my habit of running ls every time
+alias vim="nvim"
 #Abbrevations for fish shell
 #abbr -a rc --position command --set-cursor -- "g++ %.cpp -o run.exe && ./run.exe"
 function vterm_printf;
@@ -53,6 +53,14 @@ starship init fish | source
 fish_config theme choose "Dracula Official"
 fzf --fish | source
 
+# Vim for for fish
+fish_vi_key_bindings
+bind -M insert jk 'set fish_bind_mode default; commandline -f repaint'
+function fish_mode_prompt
+  # Intentionally empty to disable fish's default mode indicator
+end
+
+set -Ux TERMINAL ghostty
 # fzf configuration
 set -gx FZF_DEFAULT_OPTS '--height 80% --border --layout=default'
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git --exclude node_modules'

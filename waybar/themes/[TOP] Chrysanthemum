@@ -21,6 +21,7 @@
 "modules-left": [
 "clock#gar",
 	"custom/separator#line",
+  "cpu",
   "memory",
   "custom/diskfree",
 

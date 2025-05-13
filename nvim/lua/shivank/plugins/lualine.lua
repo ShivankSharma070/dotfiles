@@ -62,11 +62,13 @@ return {
 			},
 		}
     local customTheme = require'lualine.themes.auto'
-    customTheme.normal.c.bg='blend'
-    customTheme.insert.c.bg='blend'
-    customTheme.visual.c.bg='blend'
-    customTheme.command.c.bg='blend'
-    customTheme.replace.c.bg='blend'
+    if customTheme.normal and customTheme.normal.a.bg ~= "#268bd3" then
+          customTheme.normal.c.bg='blend'
+          customTheme.insert.c.bg='blend'
+          customTheme.visual.c.bg='blend'
+          customTheme.command.c.bg='blend'
+          customTheme.replace.c.bg='blend'
+    end
 
     -- local bufferCount = get_buffer_count()
     lualine.setup({

@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- path to plugin folder
 -- diable that annoying message that pops up whenever you change your configs
-require("lazy").setup({ { import = "shivank.plugins" }, { import = "shivank.plugins.lsp"},{ import = "shivank.plugins.myColorschemes" } }, {
+require("lazy").setup({ { import = "shivank.plugins" }, { import = "shivank.plugins.lsp"} }, {
   checker = {
     enabled = true,
     notify = false,

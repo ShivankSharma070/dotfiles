@@ -35,7 +35,7 @@ opt.breakindent = true
 opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 opt.splitkeep = "cursor"
 opt.undofile = true
-
+opt.scrolloff = 8
 -- opt.textwidth = 90
 -- opt.wrap = true
 opt.colorcolumn = "90"

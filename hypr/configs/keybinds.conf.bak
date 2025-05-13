@@ -1,25 +1,9 @@
-# $mainMod = SUPER
-# $scripts = $HOME/.config/hypr/scripts
-# $configs = $HOME/.config/hypr/configs
-# $files = thunar
-# $term = kitty
-
-
-
-# # Move focus with mainMod + arrow keys
-# bind = $mainMod, left, movefocus, l
-# bind = $mainMod, right, movefocus, r
-# bind = $mainMod, up, movefocus, u
-# bind = $mainMod, down, movefocus, d
-
 # # Resize
+
 # binde = $mainMod SHIFT, left, resizeactive,-50 0
 # binde = $mainMod SHIFT, right, resizeactive,50 0
 # binde = $mainMod SHIFT, up, resizeactive,0 -50
 # binde = $mainMod SHIFT, down, resizeactive,0 50
-
-
-
 
 # # Master Layout
 # bind = $mainMod CTRL, D, layoutmsg, removemaster
@@ -28,64 +12,6 @@
 # bind = $mainMod, K, layoutmsg, cycleprev
 # bind = $mainMod, M, exec, hyprctl dispatch splitratio 0.3
 
-# # Groups
-# bind = $mainMod, G, togglegroup
-# bind = ALT, tab, changegroupactive  #change focus to another window
-
-
-# # Workspaces ------------------------------------------------------------------
-
-
-
-
-# # Move using tab
-# bind = $mainMod, tab, workspace, m+1
-# bind = $mainMod SHIFT, tab, workspace, m-1
-
-# # Scroll through existing workspaces with mainMod + scroll
-# bind = $mainMod, mouse_down, workspace, e+1
-# bind = $mainMod, mouse_up, workspace, e-1
-# bind = $mainMod, period, workspace, e+1
-# bind = $mainMod, comma, workspace, e-1
-
-# # Special workspace
-# bind = $mainMod SHIFT, U, movetoworkspace, special
-# bind = $mainMod, U, togglespecialworkspace,
-
-# # Scripts ------------------------------------------------------------------------
-
-# # Sound control
-# bind = $mainMod, V, exec, $scripts/volume_control.sh --inc #volume up
-# bind = $mainMod, Z, exec, $scripts/volume_control.sh --dec #volume down
-
-# bind = $mainMod, SPACE, exec, $scripts/media_control.sh --pause
-# bind = $mainMod, C, exec, $scripts/media_control.sh --nxt
-# bind = $mainMod, X, exec, $scripts/media_control.sh --prv
-
-# # Wallpapers
-# bind = $mainMod, W, exec, $scripts/wallpaperSelect.sh # Select wallpaper to apply
-
-
-# # Screenshot keybindings NOTE: You may need to press Fn key as well
-# bind = $mainMod, Print, exec, $scripts/screenshot.sh --now
-# bind = $mainMod SHIFT, Print, exec, $scripts/screenshot.sh --area
-# bind = $mainMod CTRL, Print, exec, $scripts/screenshot.sh --in5 #screenshot in 5 secs
-
-# # screenshot with swappy (another screenshot tool)
-# bind = $mainMod SHIFT, S, exec, $scripts/screenshot.sh --swappy
-
-# # Launchers
-# bindr = $mainMod, $mainMod_L, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window # Rofi
-# bind = $mainMod, Return, exec, $term  # Launch terminal
-# bind = $mainMod, T, exec, $files # File manager
-
-# bind = $mainMod ALT, R, exec, $scripts/refresh.sh # Refresh waybar, swaync, rofi
-# bind = $mainMod ALT, V, exec, $scripts/clipManager.sh # Clipboard Manager
-# bind = $mainMod SHIFT, N, exec, swaync-client -t -sw # swayNC panel
-
-# # Waybar / Bar related
-# bind = $mainMod CTRL, B, exec, $scripts/waybarStyles.sh # Waybar Styles Menu
-# bind = $mainMod ALT, B, exec, $scripts/waybarLayout.sh # Waybar Layout Menu
 
 
 
@@ -94,17 +20,14 @@
 ### KEYBINDINGS ###
 ###################
 
-# See https://wiki.hyprland.org/Configuring/Keywords/
 $mainMod = SUPER # Sets "Windows" key as main modifier
 
 bind = $mainMod, W, exec, killall -SIGUSR1 waybar # Toggle hide/show waybar
-# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-# bind = $mainMod, Return, exec, /home/shivank/.config/ghostty/ghostty_with_tmux.sh 
-bind = $mainMod, Return, exec, /home/shivank/scripts/terminal_with_tmux.sh 
+bind = $mainMod, Return, exec, /home/shivank/.config/ghostty/ghostty_with_tmux.sh 
 # bind = $mainMod, B, exec, qutebrowser
 # bind = $mainMod SHIFT, B, exec, $browser
-bind = $mainMod, SPACE, exec, search_launcher.sh
-bind = $mainMod SHIFT, Return, exec, /home/shivank/.config/rofi/scripts/launcher_t1
+bind = $mainMod, SPACE, exec, pkill rofi || /home/shivank/.config/rofi/scripts/launcher_t1
+bind = $mainMod SHIFT, Return, exec, pkill rofi || search_launcher.sh
 # bind = $mainMod SHIFT, Return, exec, wofi --show run
 bind = $mainMod CTRL, Return, exec, $terminal -e yazi &
 bind = $mainMod SHIFT, C, killactive,
@@ -280,10 +203,6 @@ bindel = ,XF86HomePage, exec, min-browser
 bindel = ,XF86Calculator, exec, qalculate-gtk
 bindel = ,XF86Tools, exec, spotify
 bindel = ,print, exec, hyprshot -m region
-
-# Toad One mouse controls
-
-
 
 # Requires playerctl
 bindl = , XF86AudioNext, exec, playerctl -p spotify next

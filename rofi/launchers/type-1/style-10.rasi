@@ -21,7 +21,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                      "~/.config/rofi/colors/dracula.rasi"
+@import                      "~/.config/rofi/colors/solarized.rasi"
 @import                          "shared/fonts.rasi"
 
 * {

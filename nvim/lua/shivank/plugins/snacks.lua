@@ -199,15 +199,6 @@ return {
 				end,
 				desc = "Show all Possible commands",
 			},
-      
-      -- Dismiss all notifications
-			{
-				"<leader>un",
-				function()
-					Snacks.notifier.hide()
-				end,
-				desc = "Dismiss All Notifications",
-			},
 
 			-- Terminal
 			{
@@ -242,7 +233,7 @@ return {
 		---@type snacks.Config
 		opts = {
 			notifier = {
-				enabled = true,
+				enabled = false,
 				top_down = false, -- place notifications from top to bottom
 			},
 
@@ -420,6 +411,7 @@ return {
 					Snacks.toggle.inlay_hints():map("<leader>oh")
 					Snacks.toggle.indent():map("<leader>og")
 					Snacks.toggle.dim():map("<leader>oD")
+
 				end,
 			})
 		end,

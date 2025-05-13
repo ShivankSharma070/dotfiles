@@ -86,6 +86,7 @@ $os\
 $battery\
 $time"""
 
+
 [fill]
 style="white"
 symbol =  '󱢺 '
@@ -94,11 +95,11 @@ symbol =  '󱢺 '
 format = "$symbol "
 success_symbol = "[](bold italic bright-red)[](bold italic bright-yellow)[](bold italic bright-green)"
 error_symbol = "[](italic red)"
-vimcmd_symbol = "[■](italic dimmed green)"
+vimcmd_symbol = " " 
 # not supported in zsh
-vimcmd_replace_one_symbol = "◌"
-vimcmd_replace_symbol = "□"
-vimcmd_visual_symbol = "▼"
+vimcmd_replace_one_symbol = " "
+vimcmd_replace_symbol = " "
+vimcmd_visual_symbol = " "
 
 [env_var.VIMSHELL]
 format = "[$env_value]($style)"
