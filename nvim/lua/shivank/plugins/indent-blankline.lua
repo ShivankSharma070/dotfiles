@@ -3,6 +3,11 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	main = "ibl",
 	opts = {
-		indent = { char = "┊" },
+		indent = { char = "┆" },
+		whitespace = {
+			remove_blankline_trail = true,
+			highlight = { "whitespace" },
+		},
+		scope = { enabled = false },
 	},
 }

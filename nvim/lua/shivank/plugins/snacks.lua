@@ -106,15 +106,6 @@ return {
 				desc = "Select Scratch Buffer",
 			},
 
-			-- Show all notifications
-			{
-				"<leader>qn",
-				function()
-					Snacks.notifier.show_history()
-				end,
-				desc = "Notification History",
-			},
-
 			-- Delete All Buffers
 			{
 				"<leader>Bk",

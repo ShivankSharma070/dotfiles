@@ -59,6 +59,7 @@ return {
 
 			-- `:` cmdline setup.
 			cmp.setup.cmdline(":", {
+        completeopt = "menu,menuone",
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({
 					{ name = "path" },

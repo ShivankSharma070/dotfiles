@@ -46,8 +46,8 @@ keymap.set("i", "<C-H>", "<C-w>")
 keymap.set("i", "<C-BS>", "<C-w>")
 
 -- start and end
-keymap.set({ "n", "v" }, "H", "^")
-keymap.set({ "n", "v" }, "L", "$")
+-- keymap.set({ "n", "v" }, "H", "^")
+-- keymap.set({ "n", "v" }, "L", "$")
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement

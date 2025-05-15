@@ -5,8 +5,8 @@
         keyword animations:enabled 0;\
         keyword decoration:shadow:enabled 0;\
         keyword decoration:blur:enabled 1;\
-        keyword general:gaps_in 4;\
-        keyword general:gaps_out 4;\
+        keyword general:gaps_in 2;\
+        keyword general:gaps_out 0;\
         keyword general:border_size 1; \
         keyword decoration:rounding 2"
     exit

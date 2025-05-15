@@ -1,65 +1,57 @@
-
 #!/usr/bin/env bash
 
-# Filename: ~/github/dotfiles-latest/colorscheme/list/solarized-dark.sh
+# Filename: ~/github/dotfiles-latest/colorscheme/list/eldritch-colors.sh
+# ~/github/dotfiles-latest/colorscheme/list/eldritch-colors.sh
 
+# Lighter markdown headings
+# 4 colors to the right for these ligher headings
+# https://www.color-hex.com/color/987afb
+#
+# Given that color A (#987afb) becomes color B (#5b4996) when darkened 4 steps
+# to the right, apply the same darkening ratio/pattern to calculate what color
+# C (#37f499) becomes when darkened 4 steps to the right.
+#
 # Markdown heading 1 - color04
-linkarzu_color18="#6c71c4"  # Violet
+linkarzu_color18="#625491"
 # Markdown heading 2 - color02
-linkarzu_color19="#268bd2"  # Blue
+linkarzu_color19="#21925b"
 # Markdown heading 3 - color03
-linkarzu_color20="#859900"  # Green
+linkarzu_color20="#027d95"
 # Markdown heading 4 - color01
-linkarzu_color21="#dc322f"  # Red
+linkarzu_color21="#913c6d"
 # Markdown heading 5 - color05
-linkarzu_color22="#b58900"  # Yellow
+linkarzu_color22="#909748"
 # Markdown heading 6 - color08
-linkarzu_color23="#cb4b16"  # Orange
+linkarzu_color23="#904146"
 
-# Violet
-linkarzu_color04="#6c71c4"
-# Blue
-linkarzu_color02="#268bd2"
-# Green
-linkarzu_color03="#859900"
-# Red
-linkarzu_color01="#dc322f"
-# Yellow
-linkarzu_color05="#b58900"
-# Orange
-linkarzu_color08="#cb4b16"
-# Cyan
-linkarzu_color06="#2aa198"
-# Surface 0
-# Markdown code block, lualine color across
-linkarzu_color07="#073642"  # Base02
-# Subtext0
+linkarzu_color04="#a48cf2"
+linkarzu_color02="#37f499"
+linkarzu_color03="#04d1f9"
+linkarzu_color01="#f265b5"
+linkarzu_color05="#f1fc79"
+linkarzu_color08="#f16c75"
+linkarzu_color06="#f7c67f"
+# Markdown codeblock, lualine color across
+linkarzu_color07="#314154"
 # Comments
-linkarzu_color09="#586e75"  # Base01
-# Base
-# Terminal and Neovim background
-linkarzu_color10="#00141a"  # Base03
-# Red
+linkarzu_color09="#a5afc2"
+# Terminal and neovim background
+linkarzu_color10="#212337"
 # Underline spellbad
-linkarzu_color11="#dc322f"
-# Yellow
+linkarzu_color11="#f16c75"
 # Underline spellcap
-linkarzu_color12="#b58900"
-# Surface2
-# Line across cursor
-linkarzu_color13="#657b83"  # Base00
-# Text
+linkarzu_color12="#f1fc79"
+# line across cursor
+linkarzu_color13="#314154"
 # Cursor and tmux windows text
-linkarzu_color14="#839496"  # Base0
-# Surface1
-# Tmux inactive windows
-linkarzu_color15="#586e75"  # Base01
-# Magenta
+linkarzu_color14="#ebfafa"
+# Tmux inactive windows (7 colors to the right)
+linkarzu_color15="#013e4a"
 # Selected text
-linkarzu_color16="#d33682"
+linkarzu_color16="#d99ffd"
 # Lualine across
-linkarzu_color17="#073642"  # Base02
+linkarzu_color17="#282b43"
 # Cursor color
-linkarzu_color24="#93a1a1"  # Base1
+linkarzu_color24="#F712FF"
 # Background of inactive tmux pane
-linkarzu_color25="#002b36"  # Base03
+linkarzu_color25=#232e3b
