@@ -7,7 +7,7 @@
         keyword decoration:blur:enabled 1;\
         keyword general:gaps_in 2;\
         keyword general:gaps_out 0;\
-        keyword general:border_size 1; \
+        keyword general:border_size 0; \
         keyword decoration:rounding 2"
     exit
 # fi

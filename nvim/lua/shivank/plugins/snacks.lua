@@ -4,38 +4,99 @@ return {
 		priority = 1000,
 		lazy = false,
 		keys = {
- -- LSP
-    { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-    { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-    { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-    { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-    { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-    { "<leader>fx", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-    { "<leader>fs", function() Snacks.picker.grep({
-						exclude = { "/node_modules/", "/.dropbox/", "/.local/", "/.cache/"},
-      }) end, desc = "LSP Symbols" },
-    { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-    { "<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "LSP Diagnostics" },
-    { "<leader>fe", function() Snacks.picker.treesitter() end, desc = "Lists function names, variables from treesitter" },
-			
-      -- File Picker for Neovim 
-      {
-        "<leader>fp",
-        function ()
-          Snacks.picker.files({
+			-- LSP
+			{
+				"gd",
+				function()
+					Snacks.picker.lsp_definitions()
+				end,
+				desc = "Goto Definition",
+			},
+			{
+				"gD",
+				function()
+					Snacks.picker.lsp_declarations()
+				end,
+				desc = "Goto Declaration",
+			},
+			{
+				"gr",
+				function()
+					Snacks.picker.lsp_references()
+				end,
+				nowait = true,
+				desc = "References",
+			},
+			{
+				"gI",
+				function()
+					Snacks.picker.lsp_implementations()
+				end,
+				desc = "Goto Implementation",
+			},
+			{
+				"gy",
+				function()
+					Snacks.picker.lsp_type_definitions()
+				end,
+				desc = "Goto T[y]pe Definition",
+			},
+			{
+				"<leader>fx",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				desc = "LSP Symbols",
+			},
+			{
+				"<leader>fs",
+				function()
+					Snacks.picker.grep({
+						exclude = { "/node_modules/", "/.dropbox/", "/.local/", "/.cache/" },
+					})
+				end,
+				desc = "LSP Symbols",
+			},
+			{
+				"<leader>sS",
+				function()
+					Snacks.picker.lsp_workspace_symbols()
+				end,
+				desc = "LSP Workspace Symbols",
+			},
+			{
+				"<leader>fd",
+				function()
+					Snacks.picker.diagnostics_buffer()
+				end,
+				desc = "LSP Diagnostics",
+			},
+			{
+				"<leader>fe",
+				function()
+					Snacks.picker.treesitter()
+				end,
+				desc = "Lists function names, variables from treesitter",
+			},
+
+			-- File Picker for Neovim
+			{
+				"<leader>fp",
+				function()
+					Snacks.picker.files({
 						finder = "files",
-            cwd = "~/.config/nvim/",
+						cwd = "~/.config/nvim/",
 						hidden = true,
 						format = "file",
 						show_empty = true,
 						supports_live = true,
 						-- In case you want to override the layout for this keymap
 						layout = "vertical",
-          })
-        end,
-        desc = "Find Neovim Configuration files",
-      },
-      -- Recent File Picker
+					})
+				end,
+				desc = "Find Neovim Configuration files",
+			},
+			-- Recent File Picker
 			{
 				"<leader>fr",
 				function()
@@ -52,7 +113,7 @@ return {
 				desc = "Find Recent Files",
 			},
 
-      -- File picker 
+			-- File picker
 			{
 				"<leader>ff",
 				function()
@@ -61,7 +122,7 @@ return {
 						hidden = true,
 						format = "file",
 						show_empty = true,
-						exclude = { "/node_modules/", "/.dropbox/", "/.local/", "/.cache/"},
+						exclude = { "/node_modules/", "/.dropbox/", "/.local/", "/.cache/" },
 						supports_live = true,
 						-- In case you want to override the layout for this keymap
 						layout = "vertical",
@@ -173,7 +234,7 @@ return {
 				desc = "[P]Snacks picker buffers",
 			},
 
-      -- Show all Register 
+			-- Show all Register
 			{
 				"<leader>yy",
 				function()
@@ -181,8 +242,8 @@ return {
 				end,
 				desc = "Show all Possible commands",
 			},
-      
-      -- Show all possible command
+
+			-- Show all possible command
 			{
 				"<M-x>",
 				function()
@@ -228,42 +289,50 @@ return {
 				top_down = false, -- place notifications from top to bottom
 			},
 
-			-- },
+			---@class snacks.indent.Config
+			---@field enabled? boolean
+			indent = {
+				priority = 1,
+				enabled = true,
+				char = "┆",
+				only_scope = true,
+				only_current = true,
+			},
+
 			dashboard = {
 				preset = {
 					keys = {
-					-- 	{
-					-- 		icon = " ",
-					-- 		key = "f",
-					-- 		desc = "Find File",
-					-- 		action = ":lua Snacks.dashboard.pick('files')",
-					-- 	},
-					-- 	{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-					-- 	{
-					-- 		icon = " ",
-					-- 		key = "g",
-					-- 		desc = "Find Text",
-					-- 		action = ":lua Snacks.dashboard.pick('live_grep')",
-					-- 	},
-					-- 	{
-					-- 		icon = " ",
-					-- 		key = "r",
-					-- 		desc = "Recent Files",
-					-- 		action = ":lua Snacks.dashboard.pick('oldfiles')",
-					-- 	},
-					-- 	{
-					-- 		icon = " ",
-					-- 		key = "c",
-					-- 		desc = "Config",
-					-- 		action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-					-- 	},
-					-- 	{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
-					-- 	-- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-					-- 	{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+						{
+							icon = " ",
+							key = "f",
+							desc = "Find File",
+							action = ":lua Snacks.dashboard.pick('files')",
+						},
+						{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+						{
+							icon = " ",
+							key = "g",
+							desc = "Find Text",
+							action = ":lua Snacks.dashboard.pick('live_grep')",
+						},
+						{
+							icon = " ",
+							key = "r",
+							desc = "Recent Files",
+							action = ":lua Snacks.dashboard.pick('oldfiles')",
+						},
+						{
+							icon = " ",
+							key = "c",
+							desc = "Config",
+							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						},
+						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+						-- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 					},
 					header = [[
                                                                        
-                                                                     
        ████ ██████           █████      ██                     
       ███████████             █████                             
       █████████ ███████████████████ ███   ███████████   
@@ -373,6 +442,7 @@ return {
 				},
 			},
 		},
+
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
@@ -402,7 +472,6 @@ return {
 					Snacks.toggle.inlay_hints():map("<leader>oh")
 					Snacks.toggle.indent():map("<leader>og")
 					Snacks.toggle.dim():map("<leader>oD")
-
 				end,
 			})
 		end,

@@ -42,6 +42,7 @@ return {
 			-- vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
+
 {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -100,6 +101,7 @@ return {
     -- vim.cmd([[colorscheme catppuccin]])
 	end,
 },
+
 {
 	"rose-pine/neovim",
 	name = "rose-pine",
