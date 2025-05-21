@@ -8,11 +8,9 @@ $git_branch\
 $git_status\
 [](fg:#394260 bg:#212736)\
 $nodejs\
-$rust\
 $golang\
-$php\
 [](fg:#212736 bg:#1d2230)\
-$time\
+$custom\
 [ ](fg:#1d2230)\
 $character"""
 
@@ -21,13 +19,13 @@ $character"""
 format = "$symbol "
 success_symbol = "[](bold italic bright-red)[](bold italic bright-yellow)[](bold italic bright-green)"
 error_symbol = "[](italic red)"
-vimcmd_symbol = " " 
-vimcmd_replace_one_symbol = " "
-vimcmd_replace_symbol = " "
-vimcmd_visual_symbol = " "
+vimcmd_symbol = " " 
+vimcmd_replace_one_symbol = " "
+vimcmd_replace_symbol = " "
+vimcmd_visual_symbol = " "
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#000000 bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -52,18 +50,8 @@ symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
 [golang]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[php]
-symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
@@ -72,3 +60,53 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[custom.mood]
+command = '''
+bash -c '
+  work_moods=(
+    "😎 Crushing it"
+    "😄 Flow state"
+    "😓 Stuck in docs"
+    "🤓 Deep in code"
+    "🤖 Automating all the things"
+    "😼 Ninja mode"
+    "🤯 Brain fried"
+    "🧙 Casting regex spells"
+    "🎉 Refactor victory"
+    "😡 Git merge hell"
+  )
+  day_moods=(
+    "😎 Cool vibes"
+    "😄 Happy streak"
+    "😏 Sneaky grin"
+    "😊 Chill mode"
+    "😜 Playful jab"
+    "😸 Smug win"
+    "😝 Silly mood"
+    "😹 Quick laugh"
+  )
+  night_moods=(
+    "😜 Moonlit mischief"
+    "😺 Night owl prowl"
+    "😸 Starry-eyed smirk"
+    "😝 Midnight snack raid"
+    "🌙 Dreamy rebel"
+  )
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    if git log --since="1 hour ago" --oneline | grep -q .; then
+      echo "😄 Flow state"
+    else
+      echo "😓 Stuck in docs"
+    fi
+  elif [ $(date +%H) -ge 22 ]; then
+    echo "${night_moods[$(( $RANDOM % ${#night_moods[@]} ))]}"
+  else
+    echo "${day_moods[$(( $RANDOM % ${#day_moods[@]} ))]}"
+  fi
+'
+'''
+when = "true"
+style = "bg:#1d2230"
+format = '[ $output ]($style)'
+description = "Coding mood"
