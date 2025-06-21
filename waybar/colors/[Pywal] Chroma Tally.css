@@ -1,0 +1,268 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Pywal - Chroma Tally */
+
+@import '../../.cache/wal/colors-waybar.css';
+
+* {
+font-family: "JetBrainsMono Nerd Font";
+font-weight: bold;
+min-height: 0;
+/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+font-size: 95%;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+padding: 0px;
+}
+
+window#waybar {
+    background: rgba (0, 0, 0, 0.5);
+    border-radius: 0px 0px 6px 6px;
+	border-bottom: 2px;
+    border-style: solid;
+    padding-top:2px;
+	border-color: @color2; 
+}
+
+#workspaces button {
+    color: #eceff4;
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px 0px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.active {
+	border-radius: 15px;
+	background-color: @color2;
+    padding:0px 0px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+	color: @foreground;
+	background-color: rgba(0,153,153,0);
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#backlight,
+#backlight-slider,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#network,
+#pulseaudio,
+#pulseaudio-slider,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces,
+#custom-backlight,
+#custom-cycle_wall,
+#custom-keybinds,
+#custom-keyboard,
+#custom-light_dark,
+#custom-lock,
+#custom-menu,
+#custom-power_vertical,
+#custom-power,
+#custom-swaync,
+#custom-updater,
+#custom-weather,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.default, 
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.severe,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.sunnyDay {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+ 
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+ 
+#clock {
+ color:#a3be8c;
+}
+
+#backlight {
+    color: #ebcb8b;
+}
+
+#battery {
+    color: #d8dee9;
+}
+
+#battery.charging {
+    color: #81a1c1;
+}
+
+@keyframes blink {
+    to {
+        color: #4c566a;
+        background-color: #eceff4;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #bf616a;
+    color: #eceff4;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    color: #a3be8c;
+}
+
+#custom-diskfree {
+	color: #94e2d5;
+}
+
+#custom-keyboard,
+#memory {
+    color: #d3869b;
+}
+
+#network.disabled {
+    color:#bf616a;
+}
+
+#network{
+    color:#a3be8c;
+}
+
+#network.disconnected {
+    color: #bf616a;
+}
+
+#pulseaudio {
+    color: #04a5e5;
+}
+
+#pulseaudio.muted {
+    color: #9ca0b0;
+}
+
+#custom-light_dark,
+#temperature {
+    color: #7287fd;
+}
+
+#temperature.critical {
+    color: #bf616a;
+}
+
+#keyboard-state,
+#idle_inhibitor {
+   color: #ebcb8b;
+}
+
+#tray {
+}
+
+#custom-swaync,
+#custom-menu {
+	color: yellow;
+}
+#custom-power{
+    color: #eba0ac; 
+}
+
+#window{
+    border-style: hidden; 
+}
+
+#custom-lock,    
+#bluetooth{
+	color:#d08770;
+}
+
+#custom-cava_mviz{
+	color: @color2;
+} 
+  
+#custom-weather{
+	color:#d08770;
+}
+#taskbar button{
+    padding-left: 2px;
+    padding-right: 2px;
+
+}
+#taskbar button.active {
+	background:none;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button:hover {
+    background-color: @foreground;
+      animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+#pulseaudio-slider slider {
+	min-width: 0px;
+	min-height: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+	min-width: 80px;
+	min-height: 5px;
+	border-radius: 5px;
+}
+
+#pulseaudio-slider highlight {
+	min-height: 10px;
+	border-radius: 5px;
+}
+
+#backlight-slider slider {
+	min-width: 0px;
+	min-height: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+    background-color: @background;
+}
+
+#backlight-slider trough {
+	min-width: 80px;
+	min-height: 10px;
+	border-radius: 5px;
+}
+
+#backlight-slider highlight {
+    background-color: @foreground;
+	min-width: 10px;
+	border-radius: 5px;
+}
+
+

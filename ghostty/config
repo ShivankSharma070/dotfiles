@@ -1,0 +1,26 @@
+font-family = JetBrains Mono
+# font-family = IBM Plex Mono Medm
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance =true 
+shell-integration-features = no-cursor
+cursor-style=block
+adjust-cell-height=-2
+confirm-close-surface = false 
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = true
+mouse-hide-while-typing = true
+font-size = 10
+# theme = /home/shivank/.config/ghostty/ghostty-theme
+# theme = "Solarized Dark - Patched"
+theme = "tokyonight-storm"
+background-opacity = 0.9
+background-blur-radius = 20
+# background = #12121a # Custom dark background
+# background = #011628  # Tokyonight 
+# background = #031219 # Solarized dark
+background = #000000
+keybind = ctrl+s=text:tmux-sessionizer.sh\n
+keybind = ctrl+n=text:nvim\n
+command = fastfetch && fish

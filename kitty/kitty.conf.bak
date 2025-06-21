@@ -1,0 +1,17 @@
+include ./theme.conf
+
+
+# Font
+font_family   JetBrains Mono 
+font_size       11
+bold_font       true 
+italic_font      auto
+bold_italic_font auto
+enable_audio_bell no
+cursor_trail 0
+background_opacity 1 
+#hide_window_decorations yes
+confirm_os_window_close 0
+shell_integration  no-cursor
+window_padding_width 0 6 0 6
+map ctrl+n send_text normal,application nvim\r 

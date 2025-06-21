@@ -1,0 +1,46 @@
+;; defsrc is still necessary
+(defcfg
+  process-unmapped-keys yes
+  linux-dev-names-include (
+      "AT Translated Set 2 keyboard"
+)
+)
+
+(defsrc
+  caps a s d f g h j k l ;
+  spc up left down rght
+)
+(defvar
+  tap-time 150
+  hold-time 200
+)
+(defalias 
+  escctrl  (tap-hold 100 100 esc (layer-while-held capmod)) 
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet)) 
+  s (multi f24 (tap-hold $tap-time $hold-time s lalt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; rmet))
+
+  mu (movemouse-accel-up 10 500 1 7)
+  md (movemouse-accel-down 10 500 1 7)
+  ml (movemouse-accel-left 10 500 1 7)
+  mr (movemouse-accel-right 10 500 1 7)
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
+)
+
+(deflayer base
+  @escctrl @a @s @d @f _ _ @j @k @l @;
+  _ @mu @ml @md @mr
+)
+ (deflayer capmod
+  _ @a @s @d @f _ left down up rght _
+  bspc @mwu mltp @mwd mrtp
+ )
+

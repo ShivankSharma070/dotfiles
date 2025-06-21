@@ -1,0 +1,12 @@
+[[mgr.prepend_keymap]]
+on   = [ "g", "p","p" ]
+run  = "cd ~/Dropbox/Programming"
+desc = "Go to Programming"
+[[mgr.prepend_keymap]]
+on   = [ "g", "p", "r"]
+run  = "cd '~/Dropbox/Programming/Web Dev/React/'"
+desc = "Go to React folder"
+[[mgr.prepend_keymap]]
+on   = [ "g", "p", "."]
+run  = "cd '~/Dropbox/Programming/Web Dev/NextJs/buymeacofee/'"
+desc = "Go to Current Working Project"

@@ -1,0 +1,45 @@
+# Exlcude everything
+* 
+
+# Except these
+!.gitignore
+!nvim/
+!hypr/
+!rofi/
+!colorscheme/
+!starship.toml
+!tmux/
+!ghostty/
+!foot/
+!fish/
+!waybar/
+!wal/
+!yazi/
+!kanata/
+!systemd/
+!gtk-3.0/
+!gtk-4.0/
+!kitty/
+!wlogout/
+!fastfetch/
+
+
+# Include files inside those folder also
+!nvim/**
+!hypr/**
+!rofi/**
+!colorscheme/**
+!tmux/**
+!ghostty/**
+!foot/**
+!fish/**
+!waybar/**
+!wal/**
+!yazi/**
+!kanata/**
+!systemd/**
+!gtk-3.0/**
+!gtk-4.0/**
+!kitty/**
+!wlogout/**
+!fastfetch/**
