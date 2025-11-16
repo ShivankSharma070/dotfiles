@@ -1,0 +1,38 @@
+font-family = JetBrains Mono
+# font-family = IBM Plex Mono Medm
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance =true 
+shell-integration-features = no-cursor
+window-inherit-working-directory = false
+cursor-style=block
+adjust-cell-height=-2
+confirm-close-surface = false 
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = true
+mouse-hide-while-typing = true
+font-size = 10
+# theme = /home/shivank/.config/ghostty/ghostty-theme
+# theme = /usr/share/ghostty/themes/Doom One
+# theme = Catppuccin Macchiato
+# theme = Solarized Dark - Patched
+theme = TokyoNight Storm
+background-opacity = 0.92
+background-blur-radius = 100
+
+# custom black-grey shade
+# background = #12121a 
+
+# Tokyonight 
+background = #011628  
+
+# Solarized dark
+# background = #031219 
+
+# background = #000000
+keybind = ctrl+s=text:tmux-sessionizer.sh\n
+keybind = ctrl+n=text:nvim\n
+#command = fastfetch && fish
+#custom-shader = ./ghostty-cursor-shaders/cursor_warp.glsl
+#custom-shader = ./ghostty-cursor-shaders/ripple_cursor.glsl

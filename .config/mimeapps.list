@@ -1,0 +1,18 @@
+[Default Applications]
+application/pdf=okularApplication_pdf.desktop;
+audio/*=mpv.desktop;
+image/*=sxiv.desktop;
+inode/directory=org.gnome.Nautilus.desktop;
+text/*=neovide.desktop;
+text/html=zen.desktop;
+text/markdown=obsidian.desktop;
+video/*=mpv.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
+x-scheme-handler/postman=postman.desktop;
+image/png=sxiv.desktop
+text/css=neovide.desktop
+
+[Added Associations]
+image/png=sxiv.desktop;
+text/css=neovide.desktop;

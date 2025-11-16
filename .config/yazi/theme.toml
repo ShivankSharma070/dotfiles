@@ -1,0 +1,5 @@
+# : Flavor {{{
+
+[flavor]
+dark  = "vscode-dark-plus"
+light = "vscode-dark-plus"

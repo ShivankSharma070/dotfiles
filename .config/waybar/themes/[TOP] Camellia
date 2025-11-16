@@ -1,0 +1,255 @@
+//* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
+//* ............................................*/
+//* .............CAMELLIA.......................*/
+//* ............................................*/
+//* --- 👍 designed by https://github.com/Krautt  👍 --- */
+
+{
+ 
+"include": "~/.config/waybar/modules",
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 0,
+"fixed-center": true,
+"ipc": true,
+//"margin-top": 0,
+//"margin-bottom": 0,
+//"margin-left": 0,
+//"margin-right": 0,
+	
+"modules-left": [
+	"hyprland/workspaces#cam",
+	"custom/separator#line", 
+	"mpris",
+	"wlr/taskbar",
+    "cava"
+	],
+
+"modules-center": ["hyprland/window#cam"],
+
+"modules-right": [
+"custom/pacman",
+	"custom/backlight",
+	"backlight/slider",
+	"custom/separator#line",
+    "cpu",
+    "memory",
+    "custom/diskfree",
+	"custom/separator#line",
+	"clock#cam",
+	"custom/separator#line",
+    //"temperature",
+	"battery#cam",
+   // "wireplumber",
+	//"custom/speaker",
+	"pulseaudio/slider",
+	//"network#cam",
+    "custom/notification",
+	"tray#cam",
+	],
+
+// Additional modules //
+    "cpu": {
+        "format": "⧯ {usage}%" ,
+        "tooltip": true,
+        "on-click": "missioncenter"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "󰍛 {}%",
+        "max-length": 15,
+        "on-click": "missioncenter"
+    },
+ "temperature": {
+	 "thermal-zone": 0,
+	 "critical-threshold": 80,
+	 "format-critical": "{temperatureC}°C ",
+	"format": "{temperatureC}°C "
+},
+"hyprland/workspaces#cam": {
+	"active-only":false,
+	"all-outputs": true,
+	"format": "{name}",
+	"show-special": false,
+	"on-click": "activate",
+	"on-scroll-up": "hyprctl dispatch workspace e+1",
+	"on-scroll-down": "hyprctl dispatch workspace e-1",
+         //"format": "{name}: {icon}",
+        "format-icons": {
+            "default": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            //"active": "󱓻",
+            //"urgent": "󱓻"
+        },
+    "persistent-workspaces": {
+      "*": 10
+      }
+
+},
+
+"hyprland/window#cam": {
+	"format": "{title}",
+	"max-length": 50,
+	"rewrite": {
+        "": "Welcome Baby",
+        "~": "Kitty",
+        "(.*) - Brave": "🌎 $1",
+        "(.*) - Doom Emacs": " $1",
+        "(.*) - Visual Studio Code": "  $1",
+},
+		"separate-outputs": true
+},
+
+"clock#cam": {
+	"interval": 60,
+	//"format": "{:%A, %I:%M %P}",
+	"format": "{:%A, %H:%M}",
+	"max-length": 25,
+        "on-click":"thunderbird -calendar"
+	
+},
+"custom/diskfree": {
+        "format": "🖴 {}",
+	"interval": 300,
+        "max-length": 20,
+         "exec": "df --total -hl | grep '/dev/nvme0n1p6' | awk '{print $4}' ",
+         "on-click": "filelight"
+    },
+
+ "custom/notification": {
+    "tooltip": false,
+    "format": " {icon} ",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+"custom/pacman": {
+	"format": " {}",
+	"interval": "once",
+	"exec": "checkupdates |wc -l",
+	"on-click": "ghostty",
+	"signal": 8
+    },
+
+"battery#cam": {
+	"interval": 60,
+	"align": 0,
+	"rotate": 0,
+	//"bat": "BAT1",
+	//"adapter": "ACAD",
+	"full-at": 100,
+	"design-capacity": false,
+	"states": {
+	  "critical": 15
+			 },
+	"format": "{capacity}% {icon}",
+	"format-charging": " {capacity}%",
+	"format-plugged": "󱘖 {capacity}%",
+	"format-full": "{icon} Full",
+	"format-alt": "{icon} {time}",
+	"format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+	"format-time": "{H}h {M}min",
+	"tooltip": true,
+	"tooltip-format": "{timeTo} {power}w"
+},
+ "wireplumber": {
+        "format": "{icon}",
+        "format-bluetooth": "󰂰",
+        "nospacing": 1,
+        "tooltip-format": "Volume : {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "default": ["󰖀","󰕾"," "]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 1
+    },
+
+"pulseaudio/slider": {
+	"min": 0,
+	"max": 100,
+	"orientation": "horizontal",
+	
+},
+
+"custom/speaker": {
+	"exec": "echo '🔊'",  
+	"interval": 1,
+	"format": "{}"
+},
+
+"backlight/slider": {
+	"min": 0,
+	"max": 100,
+	"orientation": "horizontal",
+	//"device": "intel_backlight"
+},
+
+"custom/backlight": {
+	"exec": "echo '✨'",  
+	"interval": 1,
+	"format": "{}"
+},
+
+"tray#cam": {
+	//"icon-size": 16,
+	"spacing": 10
+},
+
+"network#cam": {
+	"format": "{ifname}",
+	"format-wifi": "{icon}",
+	"format-ethernet": "󰌘",
+	"tooltip-format": "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"format-linked": "󰈁 {ifname} (No IP)",
+	"tooltip-format-disconnected": "󰌙 Disconnected",
+	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	"max-length": 50,
+	"format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+	"format-alt" : "󱛇",
+        "format-disconnected" : "󰖪",
+	"on-click": "",
+    "on-click-right": "",
+	"interval": 5,
+	"nospacing": 1,
+
+},
+
+"wlr/taskbar": {
+	"format": "{icon}",
+	"icon-size": 13,
+	//"icon-theme": "Numix-Circle",
+	"tooltip-format": "{title}",
+	"on-click": "activate",
+	"on-click-middle": "close",
+	"ignore-list": [
+		],
+	"app_ids-mapping": {
+		},
+	"rewrite": {
+
+		}
+}
+}

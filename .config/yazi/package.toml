@@ -1,0 +1,17 @@
+[plugin]
+deps = []
+
+[[flavor.deps]]
+use = "956MB/vscode-dark-modern"
+rev = "cd60541"
+hash = "f970182bee3543831796629ccf078553"
+
+[[flavor.deps]]
+use = "956MB/vscode-dark-plus"
+rev = "113cc48"
+hash = "fb2175ea2b78bff55fa83d0661d77407"
+
+[[flavor.deps]]
+use = "kmlupreti/ayu-dark"
+rev = "648a178"
+hash = "1a8af82f6246942bd700316a16c4e14a"
