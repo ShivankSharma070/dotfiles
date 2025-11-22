@@ -43,6 +43,7 @@ alias cat="bat" # using bat instaed of cat
 alias v="nvim"
 alias vim="nvim"
 alias c="/bin/clear"
+alias brave="/usr/bin/brave --force-device-scale-factor=0.7"
 
 #Abbrevations for fish shell
 abbr -a _rc --position command --set-cursor -- "g++ %.cpp -o run && ./run"

@@ -5,11 +5,11 @@
 /* --- 👍 designed by https://github.com/Krautt  👍 --- */
 
 *{
-	font-family: "JetBrains Mono Nerd Font";
-	font-weight: bold;
+	font-family: "Roboto";
+	font-weight: Bold;
 	min-height: 0;	
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-	font-size: 97%;
+	font-size: 95%;
 	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 	padding: 1px;
 }
@@ -56,24 +56,18 @@ tooltip {
 }
 
 #workspaces button {
-	color: #6E6A86;
+	color: whitesmoke;
    	box-shadow: none;
 	text-shadow: none;
    	padding: 0px;
    	border-radius: 9px;
    	padding-left: 4px;
    	padding-right: 4px;
-   	animation: gradient_f 20s ease-in infinite;
-   	transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
    
 #workspaces button.active {
-	color: whitesmoke;
+	color: palevioletred;
    	border-radius: 15px 15px 15px 15px;
-   	padding-left: 8px;
-   	padding-right: 8px;
-   	animation: gradient_f 20s ease-in infinite;
-   	transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
   
 #workspaces button.focused {
@@ -135,8 +129,8 @@ tooltip {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	padding-right: 6px;
 	padding-left: 6px;
 }
