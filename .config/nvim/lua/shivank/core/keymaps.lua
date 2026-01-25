@@ -1,15 +1,15 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader= " "
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 ---------------------
 -- General Keymaps -------------------
 -- Greatest remap ever
-keymap.set("v", "<leader>p", '"_dP')
+-- keymap.set("v", "<leader>p", '"_dP')
 
 -- use jk to exit insert mode and save the file
 keymap.set("i", "jK", "<ESC>", opts)
-keymap.set("i", "Jk", "<ESC>", opts)
+keymap.set("i", "Jk", "<leader>p", opts)
 keymap.set("i", "jk", "<ESC>", opts)
 keymap.set("i", "JK", "<ESC>", opts)
 

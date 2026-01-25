@@ -106,8 +106,8 @@ return {
 				icons_enabled = true,
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
-				theme = my_lualine_theme,
-				-- theme = customTheme,
+				-- theme = my_lualine_theme,
+				 theme = customTheme,
 			},
 
 			refresh = {

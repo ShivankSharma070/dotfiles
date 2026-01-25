@@ -4,6 +4,9 @@
 /* ......................................... */
 /* --- 👍 designed by https://github.com/Krautt  👍 --- */
 
+
+@import '../../.cache/wal/colors-waybar.css';
+
 *{
 	font-family: "Roboto";
 	font-weight: Bold;
@@ -17,7 +20,7 @@
 window#waybar {
 	background:transparent;
 	border-radius: 1px;
-	color: whitesmoke;
+	color: @foreground ;
 }
 	
 window#waybar.hidden {
@@ -56,7 +59,7 @@ tooltip {
 }
 
 #workspaces button {
-	color: whitesmoke;
+	color: @foreground;
    	box-shadow: none;
 	text-shadow: none;
    	padding: 0px;
@@ -80,7 +83,7 @@ tooltip {
 }
 	   
 #workspaces button:hover {
-	color: whitesmoke;
+	color: @foreground;
     border-radius: 15px;
  	padding-left: 2px;
     padding-right: 2px;
@@ -211,5 +214,4 @@ tooltip {
 	border-radius: 5px;
 	background-color: wheat;
 }
-	
-	
+

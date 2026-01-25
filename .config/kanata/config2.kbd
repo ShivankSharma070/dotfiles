@@ -14,9 +14,10 @@
   tap-time 150
   hold-time 200
 )
-(defalias 
-  escctrl  (tap-hold 100 100 esc (layer-while-held capmod)) 
-  a (multi f24 (tap-hold $tap-time $hold-time a lmet)) 
+
+(defalias
+  escctrl  (tap-hold 100 100 esc (layer-while-held capmod))
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
   s (multi f24 (tap-hold $tap-time $hold-time s lalt))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
   f (multi f24 (tap-hold $tap-time $hold-time f lctl))

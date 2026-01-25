@@ -1,7 +1,7 @@
 {
   "logo": {
     "source": "~/.config/fastfetch/pngwing.png",
-    "type": "kitty",             // or "iterm", "sixel", etc.
+    "type": "kitty",             // or "kitty" "iterm", "sixel", etc.
     "padding": {
         "top": 1,
         "left": 7,

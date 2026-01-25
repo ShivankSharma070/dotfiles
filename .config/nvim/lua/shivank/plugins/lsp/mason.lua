@@ -45,7 +45,6 @@ return {
 				"pylint",
 				"eslint_d",
 				"clang-format", -- c and cpp formatter
-				"cpplint",
 			},
 		},
 		dependencies = {

@@ -16,7 +16,7 @@ function M.setup()
 	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 	vim.api.nvim_set_hl(0, "String", { fg = "#89B4FA" })
 
-	vim.api.nvim_set_hl(0, "Comment", { fg = "#A8D5A8", italic = true })
+	vim.api.nvim_set_hl(0, "Comment", { fg = "#767676", italic = true })
 	vim.api.nvim_set_hl(0, "Keyword", { italic = true })
 	vim.api.nvim_set_hl(0, "Function", { fg = "#C792EA", italic = true })
 	vim.api.nvim_set_hl(0, "CursorLine", { bold = false, bg = "black" })

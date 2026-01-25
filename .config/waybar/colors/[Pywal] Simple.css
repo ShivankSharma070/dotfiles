@@ -1,6 +1,9 @@
 /* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
 /* pywal - Simple */
 
+
+@import '../../.cache/wal/colors-waybar.css';
+
 *{
 font-family: "JetBrainsMono Nerd Font";
 font-weight: bold;

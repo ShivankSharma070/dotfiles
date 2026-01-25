@@ -15,9 +15,11 @@ export PATH="$HOME/.config/rofi/scripts:$PATH"
 export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export EDITOR="nvim"
 export BROWSER="zen-browser"
-export TERM="xterm-ghostty"
+# export TERM="xterm-ghostty"
+export DEV_PATH="$HOME/OneDrive/dev/"
 
 #list
 # alias ls='ls --color=auto'
@@ -42,7 +44,10 @@ alias emacs="emacsclient -c -a 'emacs'"
 alias cat="bat" # using bat instaed of cat
 alias v="nvim"
 alias vim="nvim"
+alias nvim.="nvim ."
+alias vim.="nvim ."
 alias c="/bin/clear"
+alias hyprland="start-hyprland"
 alias brave="/usr/bin/brave --force-device-scale-factor=0.7"
 
 #Abbrevations for fish shell

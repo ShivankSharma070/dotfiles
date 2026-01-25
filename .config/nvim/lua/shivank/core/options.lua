@@ -30,7 +30,7 @@ opt.backupcopy = "yes"
 opt.showcmd = true
 opt.cmdheight = 0
 opt.laststatus = 3
-opt.scrolloff = 25
+opt.scrolloff = 10
 opt.shell = "fish"
 opt.smarttab = true
 opt.breakindent = true
@@ -38,9 +38,9 @@ opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 opt.splitkeep = "cursor"
 opt.undofile = true
 -- opt.guicursor = "a:block"
--- opt.textwidth = 90
+-- opt.textwidth = 80
 -- opt.wrap = true
--- opt.colorcolumn = "90"
+opt.colorcolumn = "90"
 -- opt.guicursor = {
 --    "n-v-c-sm:block-nCursor",
 --    "i-ci-ve:block-iCursor",
@@ -72,8 +72,8 @@ if vim.g.neovide then
 	vim.g.neovide_padding_left = 0
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_refresh_rate = 120
-	vim.g.neovide_cursor_animation_length = 0.009
-	vim.g.neovide_scroll_animation_length = 0.2
+    vim.g.neovide_cursor_animation_length = 0.05
+    vim.g.neovide_scroll_animation_length = 0.2
 	vim.api.nvim_set_keymap(
 		"n",
 		"<C-+>",
