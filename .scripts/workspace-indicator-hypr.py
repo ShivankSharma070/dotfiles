@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 import gi
 import json
 import subprocess
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk, Gdk, GLib
+gi.require_version("Gtk4LayerShell", "1.0")
+
+from gi.repository import Gtk, Gdk, GLib, Gtk4LayerShell
+
 
 class WorkspaceIndicator(Gtk.Application):
     def __init__(self):
@@ -14,18 +18,53 @@ class WorkspaceIndicator(Gtk.Application):
         if not self.window:
             self.window = Gtk.ApplicationWindow(application=self)
 
-            # Set window properties
+            # --- LAYER SHELL SETUP ---
+            Gtk4LayerShell.init_for_window(self.window)
+            Gtk4LayerShell.set_layer(
+                self.window,
+                Gtk4LayerShell.Layer.OVERLAY
+            )
+
+            Gtk4LayerShell.set_anchor(
+                self.window,
+                Gtk4LayerShell.Edge.BOTTOM,
+                True
+            )
+            Gtk4LayerShell.set_anchor(
+                self.window,
+                Gtk4LayerShell.Edge.RIGHT,
+                True
+            )
+
+            Gtk4LayerShell.set_margin(
+                self.window,
+                Gtk4LayerShell.Edge.BOTTOM,
+                5
+            )
+            Gtk4LayerShell.set_margin(
+                self.window,
+                Gtk4LayerShell.Edge.RIGHT,
+                5
+            )
+
+            # Optional but recommended for indicators
+            Gtk4LayerShell.set_keyboard_mode(
+                self.window,
+                Gtk4LayerShell.KeyboardMode.NONE
+            )
+
+            # --- WINDOW PROPERTIES ---
             self.window.set_title("WorkspaceIndicator")
             self.window.set_decorated(False)
             self.window.set_default_size(30, 25)
             self.window.set_resizable(False)
             self.window.set_focusable(False)
 
-            # Label
+            # --- LABEL ---
             self.label = Gtk.Label(label="")
             self.window.set_child(self.label)
 
-            # CSS
+            # --- CSS ---
             css_provider = Gtk.CssProvider()
             css_provider.load_from_data(b"""
                 window {
@@ -40,7 +79,7 @@ class WorkspaceIndicator(Gtk.Application):
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
 
-            # Update workspace
+            # --- UPDATE LOOP ---
             GLib.timeout_add(300, self.update_workspace)
 
         self.window.present()
@@ -55,9 +94,11 @@ class WorkspaceIndicator(Gtk.Application):
             print(f"Error: {e}")
         return True
 
+
 def main():
     app = WorkspaceIndicator()
     app.run()
+
 
 if __name__ == "__main__":
     main()

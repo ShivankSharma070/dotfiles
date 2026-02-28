@@ -1,0 +1,180 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+    {
+        "context": "Editor && (vim_mode == insert)",
+        "bindings": {
+            // Exit insert mode with jk/jk variants
+            "j k": "vim::NormalBefore",
+            "j K": "vim::NormalBefore",
+            "J k": "vim::NormalBefore",
+            "J K": "vim::NormalBefore",
+
+            // Move lines up and down (Alt+j/k)
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp",
+
+            // Delete word backwards
+            "ctrl-backspace": "editor::DeleteToPreviousWordStart",
+        },
+    },
+    {
+        "context": "Editor && (vim_mode == normal)",
+        "bindings": {
+            // Start and End of line (H and L)
+            "H": "vim::FirstNonWhitespace",
+            "L": "vim::EndOfLine",
+            "s": "vim::Search",
+
+            "space f f": "file_finder::Toggle",
+            "space f s": "project_panel::NewSearchInDirectory",
+            "space f e": "project_symbols::Toggle",
+
+            "space f r": [
+                "projects::OpenRecent",
+                {
+                    "create_new_window": false,
+                },
+            ],
+
+            // Scroll with centering
+            "ctrl-d": ["editor::MoveDownByLines", { "lines": 10 }],
+            "ctrl-u": ["editor::MoveUpByLines", { "lines": 10 }],
+
+            // Window/Split management
+            "space w v": "pane::SplitRight",
+            "space w -": "pane::SplitDown",
+            "space w x": "pane::CloseActiveItem",
+            "space b k": "pane::CloseActiveItem",
+
+            // Search highlight clear
+            "space n h": "buffer_search::Dismiss",
+            "space o t": "terminal_panel::Toggle",
+            "space m p": "editor::Format",
+
+            // Select All
+            "ctrl-a": "editor::SelectAll",
+            "ctrl-b": "workspace::ToggleRightDock",
+
+            // Numbers
+            "space +": "vim::Increment",
+            "space -": "vim::Decrement",
+
+            // Oil equivalent (Zed's Project Panel)
+            "-": "pane::RevealInProjectPanel",
+
+            // Move lines
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp",
+        },
+    },
+
+    {
+        "context": "terminal",
+        "bindings": {
+            "ctrl-d": "terminal_panel::Toggle",
+        },
+    },
+
+    {
+        "context": "Editor && (vim_mode == visual)",
+        "bindings": {
+            "H": "vim::FirstNonWhitespace",
+            "L": "vim::EndOfLine",
+
+            // Stay in visual mode after indenting
+            ">": "editor::Indent",
+            "<": "editor::Outdent",
+
+            // Move selection
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp",
+
+            // "Greatest remap ever" - Paste without losing register
+            // "p": ["vim::Paste", { "register": "_" }],
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-alt-o": null,
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-b": "workspace::ToggleRightDock",
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-alt-b": null,
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-alt-b": "workspace::ToggleLeftDock",
+        },
+    },
+    {
+        "context": "Picker > Editor",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "BufferSearchBar",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "(Editor && mode == full)",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "vim_mode == literal",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+        "bindings": {
+            "ctrl-h": null,
+        },
+    },
+    {
+        "context": "((VimControl && !menu) || (!Editor && !Terminal))",
+        "bindings": {
+            "ctrl-l": "workspace::ActivatePaneRight",
+        },
+    },
+    {
+        "context": "((VimControl && !menu) || (!Editor && !Terminal))",
+        "bindings": {
+            "ctrl-h": "workspace::ActivatePaneLeft",
+        },
+    },
+    {
+        "context": "(( Editor && vim_mode == normal))",
+        "bindings": {
+            "space m p": "editor::Format",
+        },
+    },
+]

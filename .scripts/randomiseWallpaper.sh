@@ -2,8 +2,8 @@
 
 
 # Wayland / GUI environment variables for cron
-# export XDG_RUNTIME_DIR="/run/user/$(id -u)"
-# export WAYLAND_DISPLAY="wayland-1"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export WAYLAND_DISPLAY="wayland-1"
 export SWWW_TRANSITION=none
 
 #setting wallpaper
@@ -17,8 +17,8 @@ echo "$fileName"
 pid=$(pidof swww-daemon)
 
 if [ -z $pid ] ; then
-echo "Trying to start daemon.."
-    swww-daemon
+    echo "Trying to start daemon.."
+    swww-daemon 
     sleep 2
 else
     echo "Daemon already running... "

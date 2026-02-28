@@ -40,12 +40,12 @@ opt.undofile = true
 -- opt.guicursor = "a:block"
 -- opt.textwidth = 80
 -- opt.wrap = true
-opt.colorcolumn = "90"
--- opt.guicursor = {
---    "n-v-c-sm:block-nCursor",
---    "i-ci-ve:block-iCursor",
---    "r-cr-o:block-rCursor",
---  }
+opt.colorcolumn = "80"
+ opt.guicursor = {
+    "n-v-c-sm:block-nCursor",
+    "i-ci-ve:block-iCursor",
+    "r-cr-o:block-rCursor",
+  }
 -- Above option applies the setting to ALL file types, if you want to apply it
 -- to specific files only
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -63,7 +63,11 @@ if vim.g.neovide then
 	vim.opt.linespace = 0
 	vim.opt.cursorline = false
 	vim.opt.cmdheight = 1
-	-- vim.opt.guicursor = "a:block"
+	vim.opt.guicursor = {
+    "n-v-c-sm:block-nCursor",
+    "i-ci-ve:block-iCursor",
+    "r-cr-o:block-rCursor",
+  }
 	vim.g.neovide_scale_factor = 1
 	vim.g.neovide_padding_top = 1
 	vim.g.neovide_floating_corner_radius = 0.8
@@ -73,7 +77,7 @@ if vim.g.neovide then
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_refresh_rate = 120
     vim.g.neovide_cursor_animation_length = 0.05
-    vim.g.neovide_scroll_animation_length = 0.2
+    vim.g.neovide_scroll_animation_length = 0.1
 	vim.api.nvim_set_keymap(
 		"n",
 		"<C-+>",

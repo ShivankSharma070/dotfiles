@@ -7,7 +7,7 @@ browser="zen-browser"
 options="Google
 Yt-Youtube
 Vtop
-Whatsapp
+Web-Whatsapp
 NeoCollab
 Fast
 ChatGpt

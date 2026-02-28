@@ -10,4 +10,4 @@ if [[  -z $dirToOpen ]]; then
     exit 1
 fi
 
-cd $dirToOpen && neovide $dirToOpen
+cd "$dirToOpen" && neovide "$dirToOpen"

@@ -1,34 +1,34 @@
-local M = {}
-function M.setup()
-	vim.cmd([[
-  highlight Normal guibg=none ctermbg=none
-  highlight NonText guibg=none ctermbg=none
-]])
-	-- these are the comments
-
-	-- Make notifications truly transparent
-	vim.api.nvim_set_hl(0, "NotifyBackground", {
-		bg = "#d77a8a",
-	})
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-	vim.api.nvim_set_hl(0, "String", { fg = "#89B4FA" })
-
-	vim.api.nvim_set_hl(0, "Comment", { fg = "#767676", italic = true })
-	vim.api.nvim_set_hl(0, "Keyword", { italic = true })
-	vim.api.nvim_set_hl(0, "Function", { fg = "#C792EA", italic = true })
-	vim.api.nvim_set_hl(0, "CursorLine", { bold = false, bg = "black" })
-	vim.api.nvim_set_hl(0, "Visual", { bold = true, bg = "#3B2F35" })
-	-- vim.api.nvim_set_hl(0, "nCursor", { bg = "#89B4FA", fg = "#000000" })
-	-- vim.api.nvim_set_hl(0, "rCursor", { bg = "#9999ff", fg = "#000000" })
-	-- vim.api.nvim_set_hl(0, "iCursor", { bg = "#ea9d34", fg = "#000000" })
-
-
-	-- Git Signs
-	vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff5f" })
-	vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#ffff00" })
-	vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#ff005f" })
-end
-return M
+-- local M = {}
+-- function M.setup()
+-- 	vim.cmd([[
+--   highlight Normal guibg=none ctermbg=none
+--   highlight NonText guibg=none ctermbg=none
+-- ]])
+-- 	-- these are the comments
+--
+-- 	-- Make notifications truly transparent
+-- 	vim.api.nvim_set_hl(0, "NotifyBackground", {
+-- 		bg = "#d77a8a",
+-- 	})
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "String", { fg = "#89B4FA" })
+--
+-- 	-- vim.api.nvim_set_hl(0, "Comment", { fg = "#767676", italic = true })
+-- 	vim.api.nvim_set_hl(0, "Comment", { fg = "#00ff5f", italic = true })
+-- 	vim.api.nvim_set_hl(0, "Keyword", { italic = true })
+-- 	vim.api.nvim_set_hl(0, "Function", { fg = "#C792EA", italic = true })
+-- 	vim.api.nvim_set_hl(0, "CursorLine", { bold = false, bg = "black" })
+-- 	vim.api.nvim_set_hl(0, "Visual", { bold = true, bg = "#3B2F35" })
+-- 	-- vim.api.nvim_set_hl(0, "nCursor", { bg = "#ffffff", fg = "#000000" })
+-- 	-- vim.api.nvim_set_hl(0, "rCursor", { bg = "#9999ff", fg = "#000000" })
+-- 	-- vim.api.nvim_set_hl(0, "iCursor", { bg = "#ff005f", fg = "#000000" })
+--
+-- 	-- Git Signs
+-- 	vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff5f" })
+-- 	vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#ffff00" })
+-- 	vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#ff005f" })
+-- end
+-- return M

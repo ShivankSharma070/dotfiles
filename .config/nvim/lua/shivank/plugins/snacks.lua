@@ -167,7 +167,7 @@ return {
 		---@type snacks.Config
 		opts = {
 			notifier = {
-				enabled = true,
+				enabled = false,
 				top_down = true, -- place notifications from top to bottom
 			},
 

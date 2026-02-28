@@ -47,7 +47,7 @@ alias vim="nvim"
 alias nvim.="nvim ."
 alias vim.="nvim ."
 alias c="/bin/clear"
-alias hyprland="start-hyprland"
+alias hypr="start-hyprland"
 alias brave="/usr/bin/brave --force-device-scale-factor=0.7"
 
 #Abbrevations for fish shell

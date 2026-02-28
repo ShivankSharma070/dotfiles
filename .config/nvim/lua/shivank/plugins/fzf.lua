@@ -17,11 +17,18 @@ return {
 
 	keys = {
 		{
+			"<leader>e",
+			function()
+				require("fzf-lua").lsp_document_symbols()
+			end,
+			desc = "LSP Symbols",
+		},
+		{
 			"<leader>fe",
 			function()
 				require("fzf-lua").lsp_live_workspace_symbols()
 			end,
-			desc = "LSP Symbols",
+			desc = "LSP Workspace Symbols",
 		},
 		{
 			"<leader>fd",
@@ -33,10 +40,12 @@ return {
 		{
 			"<leader>ft",
 			function()
-				require("fzf-lua").grep({search='BUG|TODO|HACK|PERF|NOTE|FIX', no_esc=true,
-              rg_opts = "-w",
-                    silent = true
-                })
+				require("fzf-lua").grep({
+					search = "BUG|TODO|HACK|PERF|NOTE|FIX",
+					no_esc = true,
+					rg_opts = "-w",
+					silent = true,
+				})
 			end,
 			desc = "Todo list",
 		},
@@ -62,7 +71,7 @@ return {
 			function()
 				require("fzf-lua").oldfiles({
 					fd_opts = "--type f --hidden --follow --exclude node_modules --exclude .local --exclude .cache --exclude .git --exclude go",
-                })
+				})
 			end,
 			desc = "Find Files",
 		},

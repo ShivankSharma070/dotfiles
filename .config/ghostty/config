@@ -17,10 +17,11 @@ font-size = 10
 # theme = /usr/share/ghostty/themes/Doom One
 # theme = Catppuccin Macchiato
 # theme = Solarized Dark - Patched
-theme = TokyoNight Storm
-background-opacity = 100
+# theme = TokyoNight Storm
+background-opacity = 0.93
 background-blur-radius = 100
 
+background = #000000
 # custom black-grey shade
 # background = #12121a 
 
@@ -30,7 +31,6 @@ background-blur-radius = 100
 # Solarized dark
 # background = #031219 
 
-background = #000000
 keybind = ctrl+s=text:tmux-sessionizer.sh\n
 keybind = ctrl+n=text:nvim\n
 #command = fastfetch && fish
