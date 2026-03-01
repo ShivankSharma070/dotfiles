@@ -55,7 +55,7 @@ abbr -a _rc --position command --set-cursor -- "g++ %.cpp -o run && ./run"
 abbr -a _nvim --position command --set-cursor -- "neovide &"
 abbr -a tm --position command --set-cursor -- "tmux-sessionizer.sh"
 
-starship init fish | source
+# starship init fish | source
 fzf --fish | source
 
 # Zoxide 
