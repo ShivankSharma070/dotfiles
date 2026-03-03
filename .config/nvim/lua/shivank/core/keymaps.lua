@@ -9,10 +9,10 @@ local opts = { noremap = true, silent = true }
 
 
 -- use jk to exit insert mode and save the file
- -- keymap.set("i", "jK", "<ESC>", opts)
- -- keymap.set("i", "Jk", "<leader>p", opts)
- -- keymap.set("i", "jk", "<ESC>", opts)
- -- keymap.set("i", "JK", "<ESC>", opts)
+keymap.set("i", "jK", "<ESC>", opts)
+keymap.set("i", "Jk", "<leader>p", opts)
+keymap.set("i", "jk", "<ESC>", opts)
+keymap.set("i", "JK", "<ESC>", opts)
 
 -- move line up or down in normal and insert mode, and selection in visual mode
 keymap.set("i", "<M-j>", "<ESC>:m+<cr>==gi", opts)
