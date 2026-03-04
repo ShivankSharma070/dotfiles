@@ -6,6 +6,7 @@ return {
 
 		-- Only one of these is needed.
 		"esmuellert/codediff.nvim", -- optional
+		"https://github.com/isakbm/gitgraph.nvim",
 	},
 	cmd = "Neogit",
 	keys = {
@@ -13,10 +14,9 @@ return {
 	},
 	config = function()
 		require("neogit").setup({
-			-- Hides the hints at the top of the status buffer
-			disable_hint = false,
+			disable_hint = true,
 			-- Disables changing the buffer highlights based on where the cursor is.
-			disable_context_highlighting = false,
+			disable_context_highlighting = true,
 			-- Disables signs for sections/items/hunks
 			disable_signs = false,
 			-- Path to git executable. Defaults to "git". Can be used to specify a custom git binary or wrapper script.
@@ -28,22 +28,9 @@ return {
 			-- Changes what mode the Commit Editor starts in. `true` will leave nvim in normal mode, `false` will change nvim to
 			-- insert mode, and `"auto"` will change nvim to insert mode IF the commit message is empty, otherwise leaving it in
 			-- normal mode.
-			disable_insert_on_commit = "auto",
-			-- When enabled, will watch the `.git/` directory for changes and refresh the status buffer in response to filesystem
-			-- events.
-			filewatcher = {
-				interval = 1000,
-				enabled = true,
-			},
-			-- "ascii"   is the graph the git CLI generates
-			-- "unicode" is the graph like https://github.com/rbong/vim-flog
-			-- "kitty"   is the graph like https://github.com/isakbm/gitgraph.nvim - use https://github.com/rbong/flog-symbols if you don't use Kitty
-			graph_style = "ascii",
-			-- Show relative date by default. When set, use `strftime` to display dates
-			commit_date_format = nil,
-			log_date_format = nil,
-			-- Show message with spinning animation when a git command is running.
-			process_spinner = false,
+			disable_insert_on_commit = true,
+			graph_style = "kitty",
+			process_spinner = true,
 			-- Used to generate URL's for branch popup action "pull request", "open commit" and "open tree"
 			git_services = {
 				["github.com"] = {
@@ -51,49 +38,7 @@ return {
 					commit = "https://github.com/${owner}/${repository}/commit/${oid}",
 					tree = "https://${host}/${owner}/${repository}/tree/${branch_name}",
 				},
-				["bitbucket.org"] = {
-					pull_request = "https://bitbucket.org/${owner}/${repository}/pull-requests/new?source=${branch_name}&t=1",
-					commit = "https://bitbucket.org/${owner}/${repository}/commits/${oid}",
-					tree = "https://bitbucket.org/${owner}/${repository}/branch/${branch_name}",
-				},
-				["gitlab.com"] = {
-					pull_request = "https://gitlab.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
-					commit = "https://gitlab.com/${owner}/${repository}/-/commit/${oid}",
-					tree = "https://gitlab.com/${owner}/${repository}/-/tree/${branch_name}?ref_type=heads",
-				},
-				["azure.com"] = {
-					pull_request = "https://dev.azure.com/${owner}/_git/${repository}/pullrequestcreate?sourceRef=${branch_name}&targetRef=${target}",
-					commit = "",
-					tree = "",
-				},
-				["codeberg.org"] = {
-					pull_request = "https://${host}/${owner}/${repository}/compare/${branch_name}",
-					commit = "https://${host}/${owner}/${repository}/commit/${oid}",
-					tree = "https://${host}/${owner}/${repository}/src/branch/${branch_name}",
-				},
 			},
-			-- Allows a different telescope sorter. Defaults to 'fuzzy_with_index_bias'. The example below will use the native fzf
-			-- sorter instead. By default, this function returns `nil`.
-			telescope_sorter = function()
-				return require("telescope").extensions.fzf.native_fzf_sorter()
-			end,
-			-- Persist the values of switches/options within and across sessions
-			remember_settings = true,
-			-- Scope persisted settings on a per-project basis
-			use_per_project_settings = true,
-			-- Table of settings to never persist. Uses format "Filetype--cli-value"
-			ignored_settings = {},
-			-- Configure highlight group features
-			highlight = {
-				italic = true,
-				bold = true,
-				underline = true,
-			},
-			-- Set to false if you want to be responsible for creating _ALL_ keymappings
-			use_default_keymaps = true,
-			-- Neogit refreshes its internal state after specific events, which can be expensive depending on the repository size.
-			-- Disabling `auto_refresh` will make it so you have to manually refresh the status after you open it.
-			auto_refresh = true,
 			-- Value used for `--sort` option for `git branch` command
 			-- By default, branches will be sorted by commit date descending
 			-- Flag description: https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortltkeygt
@@ -133,28 +78,7 @@ return {
 			notification_icon = "󰊢",
 			status = {
 				show_head_commit_hash = true,
-				recent_commit_count = 10,
-				HEAD_padding = 10,
-				HEAD_folded = false,
-				mode_padding = 3,
-				mode_text = {
-					M = "modified",
-					N = "new file",
-					A = "added",
-					D = "deleted",
-					C = "copied",
-					U = "updated",
-					R = "renamed",
-					T = "changed",
-					DD = "unmerged",
-					AU = "unmerged",
-					UD = "unmerged",
-					UA = "unmerged",
-					DU = "unmerged",
-					AA = "unmerged",
-					UU = "unmerged",
-					["?"] = "",
-				},
+				recent_commit_count = 20,
 			},
 			commit_editor = {
 				kind = "auto",
@@ -169,20 +93,20 @@ return {
 				spell_check = true,
 			},
 			commit_select_view = {
-				kind = "tab",
+				kind = "auto",
 			},
 			commit_view = {
 				kind = "vsplit",
 				verify_commit = vim.fn.executable("gpg") == 1, -- Can be set to true or false, otherwise we try to find the binary
 			},
 			log_view = {
-				kind = "tab",
+				kind = "auto",
 			},
 			rebase_editor = {
 				kind = "auto",
 			},
 			reflog_view = {
-				kind = "tab",
+				kind = "auto",
 			},
 			merge_editor = {
 				kind = "auto",
@@ -191,49 +115,24 @@ return {
 				kind = "floating_console",
 			},
 			popup = {
-				kind = "split",
+				kind = "auto",
 			},
 			stash = {
-				kind = "tab",
+				kind = "auto",
 			},
 			refs_view = {
-				kind = "tab",
+				kind = "auto",
 			},
 			signs = {
 				-- { CLOSED, OPENED }
 				hunk = { "", "" },
-				item = { ">", "v" },
-				section = { ">", "v" },
+				item = { "", "" },
+				section = { " ", " " },
 			},
 			-- Each Integration is auto-detected through plugin presence, however, it can be disabled by setting to `false`
 			integrations = {
-				-- If enabled, use telescope for menu selection rather than vim.ui.select.
-				-- Allows multi-select and some things that vim.ui.select doesn't.
-				telescope = nil,
-				-- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `diffview`.
-				-- The diffview integration enables the diff popup.
-				--
-				-- Requires you to have `sindrets/diffview.nvim` installed.
-				diffview = nil,
-
-				-- Alternative diff viewer integration.
-				-- Requires you to have `esmuellert/codediff.nvim` installed.
-				codediff = nil,
-
-				-- If enabled, uses fzf-lua for menu selection. If the telescope integration
-				-- is also selected then telescope is used instead
-				-- Requires you to have `ibhagwan/fzf-lua` installed.
-				fzf_lua = nil,
-
-				-- If enabled, uses mini.pick for menu selection. If the telescope integration
-				-- is also selected then telescope is used instead
-				-- Requires you to have `echasnovski/mini.pick` installed.
-				mini_pick = nil,
-
-				-- If enabled, uses snacks.picker for menu selection. If the telescope integration
-				-- is also selected then telescope is used instead
-				-- Requires you to have `folke/snacks.nvim` installed.
-				snacks = nil,
+				codediff = true,
+				fzf_lua = true,
 			},
 			-- Which diff viewer to use. nil = auto-detect (tries diffview first, then codediff).
 			-- Can be "diffview" or "codediff".
@@ -277,7 +176,7 @@ return {
 					hidden = false,
 				},
 				recent = {
-					folded = true,
+					folded = false,
 					hidden = false,
 				},
 				rebase = {
@@ -367,6 +266,7 @@ return {
 					["k"] = "MoveUp",
 					["o"] = "OpenTree",
 					["q"] = "Close",
+					["ZZ"] = "Close",
 					["I"] = "InitRepo",
 					["1"] = "Depth1",
 					["2"] = "Depth2",

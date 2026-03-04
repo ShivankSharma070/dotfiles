@@ -10,6 +10,12 @@ return {
 		},
 		config = function()
 			local noice = require("noice")
+			local notify = require("notify")
+
+			notify.setup({
+				background_colour = "#000000",
+				merge_duplicates = true,
+			})
 
 			noice.setup({
 				cmdline = {
@@ -31,7 +37,7 @@ return {
 					popupmenu = {
 						relative = "editor",
 						position = {
-							row =5,
+							row = 5,
 							col = "50%",
 						},
 						win_options = {
