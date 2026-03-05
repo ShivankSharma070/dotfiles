@@ -132,33 +132,28 @@ setopt AUTO_CD INTERACTIVE_COMMENTS NO_BEEP PROMPT_SUBST
 autoload -Uz colors && colors
 
 function fish_prompt_zsh() {
-    local arrow="%F{cyan}➜ %f"
-
+    local arrow="%F{#89dceb}➜ %f"  # Sky
     local dir
     if [[ "$PWD" == "$HOME" ]]; then
-        dir="%B%F{#eb9a96}shivank%f%b"
+        dir="%B%F{#cba6f7}shivank%f%b"  # Mauve
     else
-        dir="%B%F{#eb9a96}$(basename "$PWD")%f%b"
+        dir="%B%F{#cba6f7}$(basename "$PWD")%f%b"  # Mauve
     fi
-
     local branch="" in_git_repo=0
     if git rev-parse --is-inside-work-tree 2>/dev/null | grep -q "true"; then
         in_git_repo=1
         branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     fi
-
     local git_branch_part
     if [[ $in_git_repo -eq 1 ]]; then
-        git_branch_part="%F{#eb6f92}${branch}%f"
+        git_branch_part="%F{#f38ba8}${branch}%f"  # Red
     else
-        git_branch_part="%B%F{#eb6f92}╭∩╮(•̀_·́)╭∩╮%f%b"
+        git_branch_part="%B%F{#f38ba8}╭∩╮(•̀_·́)╭∩╮%f%b"  # Red
     fi
-
     local git_status_symbol=""
     if [[ $in_git_repo -eq 1 ]]; then
         local git_status git_staged="" git_modified="" git_untracked="" git_deleted="" git_renamed=""
         git_status=$(git status --porcelain 2>/dev/null)
-
         while IFS= read -r line; do
             local status_code="${line:0:2}"
             case "${status_code:0:1}" in
@@ -167,12 +162,11 @@ function fish_prompt_zsh() {
                 R)     git_renamed="➜" ;;
             esac
             case "${status_code:1:1}" in
-                M)  git_modified="✱" ;;
-                D)  git_deleted="✖" ;;
+                M) git_modified="✖" ;;
+                D) git_deleted="✱" ;;
                 \?) git_untracked="?" ;;
             esac
         done <<< "$git_status"
-
         local ahead="" behind=""
         local ahead_behind
         ahead_behind=$(git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null)
@@ -182,25 +176,21 @@ function fish_prompt_zsh() {
             [[ $ahead_count  -gt 0 ]] && ahead="⇡${ahead_count}"
             [[ $behind_count -gt 0 ]] && behind="⇣${behind_count}"
         fi
-
         local stashed=""
         git rev-parse --verify refs/stash >/dev/null 2>&1 && stashed="📦"
-
         if   [[ -z "$git_status" && -z "$ahead" && -z "$behind" && -z "$stashed" ]]; then
-            git_status_symbol="%F{green}✔ %f"
-        elif [[ -n "$git_untracked" ]]; then  git_status_symbol="%F{#FF8A80}? %f"
-        elif [[ -n "$git_modified"  ]]; then  git_status_symbol="%F{#FF8A80}✱ %f"
-        elif [[ -n "$git_deleted"   ]]; then  git_status_symbol="%F{#FF8A80}✖ %f"
-        elif [[ -n "$git_staged"    ]]; then  git_status_symbol="%F{#90EE90}✚ %f"
-        elif [[ -n "$git_renamed"   ]]; then  git_status_symbol="%F{#DDA0DD}➜ %f"
-        elif [[ -n "$ahead"         ]]; then  git_status_symbol="%F{#00FF7F}⇡ %f"
-        elif [[ -n "$behind"        ]]; then  git_status_symbol="%F{#FF6347}⇣ %f"
-        elif [[ -n "$stashed"       ]]; then  git_status_symbol="%F{#B19CD9}📦 %f"
-        else git_status_symbol="%F{#FF8A80}%f"
+            git_status_symbol="%F{#a6e3a1}✔ %f"   # Green
+        elif [[ -n "$git_untracked" ]]; then  git_status_symbol="%F{#fab387}? %f"   # Peach
+        elif [[ -n "$git_modified"  ]]; then  git_status_symbol="%F{#f38ba8}✖ %f"   # Red
+        elif [[ -n "$git_deleted"   ]]; then  git_status_symbol="%F{#f38ba8}✱ %f"   # Red
+        elif [[ -n "$git_staged"    ]]; then  git_status_symbol="%F{#a6e3a1}✚ %f"   # Green
+        elif [[ -n "$git_renamed"   ]]; then  git_status_symbol="%F{#cba6f7}➜ %f"   # Mauve
+        elif [[ -n "$ahead"         ]]; then  git_status_symbol="%F{#89dceb}⇡ %f"   # Sky
+        elif [[ -n "$behind"        ]]; then  git_status_symbol="%F{#fab387}⇣ %f"   # Peach
+        elif [[ -n "$stashed"       ]]; then  git_status_symbol="%F{#b4befe}📦 %f"  # Lavender
+        else git_status_symbol="%F{#f38ba8}%f"  # Red
         fi
     fi
-
-    PROMPT="${arrow}${dir} %F{#3e8fb0}git:(%f${git_branch_part}%F{#3e8fb0}) %f${git_status_symbol}"
+    PROMPT="${arrow}${dir} %F{#74c7ec}git:(%f${git_branch_part}%F{#74c7ec}) %f${git_status_symbol}"
 }
-
 precmd() { fish_prompt_zsh }

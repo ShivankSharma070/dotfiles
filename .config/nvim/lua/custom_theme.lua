@@ -1,34 +1,37 @@
--- local M = {}
--- function M.setup()
--- 	vim.cmd([[
---   highlight Normal guibg=none ctermbg=none
---   highlight NonText guibg=none ctermbg=none
--- ]])
--- 	-- these are the comments
---
--- 	-- Make notifications truly transparent
--- 	vim.api.nvim_set_hl(0, "NotifyBackground", {
--- 		bg = "#d77a8a",
--- 	})
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "String", { fg = "#89B4FA" })
---
--- 	-- vim.api.nvim_set_hl(0, "Comment", { fg = "#767676", italic = true })
--- 	vim.api.nvim_set_hl(0, "Comment", { fg = "#00ff5f", italic = true })
--- 	vim.api.nvim_set_hl(0, "Keyword", { italic = true })
--- 	vim.api.nvim_set_hl(0, "Function", { fg = "#C792EA", italic = true })
--- 	vim.api.nvim_set_hl(0, "CursorLine", { bold = false, bg = "black" })
--- 	vim.api.nvim_set_hl(0, "Visual", { bold = true, bg = "#3B2F35" })
--- 	-- vim.api.nvim_set_hl(0, "nCursor", { bg = "#ffffff", fg = "#000000" })
--- 	-- vim.api.nvim_set_hl(0, "rCursor", { bg = "#9999ff", fg = "#000000" })
--- 	-- vim.api.nvim_set_hl(0, "iCursor", { bg = "#ff005f", fg = "#000000" })
---
--- 	-- Git Signs
--- 	vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff5f" })
--- 	vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#ffff00" })
--- 	vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#ff005f" })
--- end
--- return M
+local M = {}
+
+function M.setup()
+  vim.cmd([[
+    highlight Normal guibg=none ctermbg=none
+    highlight NonText guibg=none ctermbg=none
+  ]])
+
+  -- Base transparency
+  vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0a0a0a" })
+  vim.api.nvim_set_hl(0, "Normal",           { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat",      { bg = "none" })
+  vim.api.nvim_set_hl(0, "FloatBorder",      { bg = "none", fg = "#2a2a2a" })
+  vim.api.nvim_set_hl(0, "Pmenu",            { bg = "none" })
+
+  -- Syntax — low contrast, clean, nothing screams
+  vim.api.nvim_set_hl(0, "String",   { fg = "#A8C7FA" })                   -- soft sky
+  vim.api.nvim_set_hl(0, "Keyword",  { fg = "#F28FAD", italic = true })    -- dusty rose
+  vim.api.nvim_set_hl(0, "Function", { fg = "#C6D0F5", bold = true })      -- cool white-blue
+
+  -- Comments — barely there, stone gray, not distracting
+  vim.api.nvim_set_hl(0, "Comment",  { fg = "#4E7A5E", italic = true })
+
+  -- Cursor / Selection — near-invisible on black, just enough
+  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111111" })
+  vim.api.nvim_set_hl(0, "Visual",     { bg = "#1C1C1C" })
+
+  -- Git Signs — completely fresh palette, nothing conventional
+  -- Add:    electric cyan  — clean, sharp, "new"
+  -- Change: soft lilac     — calm, neutral, "modified"
+  -- Delete: warm clay      — muted, not alarming, "gone"
+  vim.api.nvim_set_hl(0, "GitSignsAdd",    { fg = "#00C9A7" }) -- cyan-teal
+  vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#9D8FD6" }) -- soft lilac
+  vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#C7705A" }) -- warm clay
+end
+
+return M
