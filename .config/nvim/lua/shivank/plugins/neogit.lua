@@ -30,7 +30,7 @@ return {
 			-- normal mode.
 			disable_insert_on_commit = true,
 			graph_style = "kitty",
-			process_spinner = true,
+			process_spinner = false,
 			-- Used to generate URL's for branch popup action "pull request", "open commit" and "open tree"
 			git_services = {
 				["github.com"] = {

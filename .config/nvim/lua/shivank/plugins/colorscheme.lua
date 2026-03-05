@@ -198,7 +198,7 @@ return {
 				end,
 			})
 
-			-- vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme rose-pine")
 			-- vim.cmd("colorscheme rose-pine-main")
 			-- vim.cmd("colorscheme rose-pine-moon")
 			-- vim.cmd("colorscheme rose-pine-dawn")
@@ -268,18 +268,18 @@ return {
 				},
 			})
 
-			local variants = {
-				"carbonfox",
-				"nordfox",
-				"nightfox",
-				"terafox",
-				"duskfox",
-			}
+			-- local variants = {
+			-- 	"carbonfox",
+			-- 	"nordfox",
+			-- 	"nightfox",
+			-- 	"terafox",
+			-- 	"duskfox",
+			-- }
 
-			math.randomseed(os.time())
-			local choice = variants[math.random(#variants)]
-
-			vim.cmd.colorscheme(choice)
+			-- math.randomseed(os.time())
+			-- local choice = variants[math.random(#variants)]
+			--
+			-- vim.cmd.colorscheme(choice)
 		end,
 	},
 }

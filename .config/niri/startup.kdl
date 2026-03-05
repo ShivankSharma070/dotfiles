@@ -1,8 +1,0 @@
-spawn-at-startup "waybar"
-spawn-sh-at-startup "runWorkspaceIndicator.sh niri"
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swww-daemon" 
-spawn-at-startup "nm-applet"
-spawn-at-startup "blueman-applet" 
-spawn-at-startup "connectwifi.sh" 
-spawn-at-startup "swaync" 

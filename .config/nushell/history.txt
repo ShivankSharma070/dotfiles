@@ -134,3 +134,7 @@ clear
 ls
 exi
 exit
+exi
+ls
+clear
+exit
