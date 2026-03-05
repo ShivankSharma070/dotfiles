@@ -11,7 +11,7 @@ return {
 	cmd = "Neogit",
 	keys = {
 		{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-	},
+        { "<leader>gl", "<cmd>Neogit log<cr>", desc = "Show Neogit UI" }, },
 	config = function()
 		require("neogit").setup({
 			disable_hint = true,
