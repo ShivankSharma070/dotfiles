@@ -6,9 +6,6 @@ if status is-interactive
     set fish_vi_force_cursor 1
 end
 
-
-bind ctrl-n "nvim"
-
 export fish_greeting=""
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
@@ -61,18 +58,10 @@ fzf --fish | source
 # Zoxide 
 zoxide init fish --cmd cd | source
 
-function fish_user_key_bindings
-    # Load the default vi-style bindings first
-    fish_vi_key_bindings
-
-    # Now override Ctrl+D (do nothing)
-    bind \cd ''
-end
-
-bind -M insert jk 'set fish_bind_mode default; commandline -f repaint'
 function fish_mode_prompt
     # Intentionally empty to disable fish's default mode indicator
 end
+
 
 # fzf configuration
 set -gx FZF_DEFAULT_OPTS '--height 80% --border --layout=default'

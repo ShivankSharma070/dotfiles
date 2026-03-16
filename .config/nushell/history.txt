@@ -138,3 +138,7 @@ exi
 ls
 clear
 exit
+ls
+ls | sort-by "size"
+ls
+exit

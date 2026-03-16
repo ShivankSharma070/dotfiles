@@ -35,7 +35,7 @@ vim.keymap.set("v", "<C-u>", "10kzz", { desc = "move up in buffer with cursor ce
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 
 -- some keymaps for deleting a word backwards
 -- Some terminals, when send a C-BS, receives C-H, therefore have to remap both to in terminal as well as GUI

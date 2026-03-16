@@ -10,8 +10,9 @@ return {
 	},
 	cmd = "Neogit",
 	keys = {
-		{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-        { "<leader>gl", "<cmd>Neogit log<cr>", desc = "Show Neogit UI" }, },
+		{ "<leader>gg", "<cmd>G<cr>", desc = "Show Neogit UI" },
+		{ "<leader>gl", "<cmd>Neogit log<cr>", desc = "Neogit Log view" },
+	},
 	config = function()
 		require("neogit").setup({
 			disable_hint = true,
@@ -56,7 +57,7 @@ return {
 			-- Default for rename branch prompt. If not set, the current branch name is used
 			initial_branch_rename = nil,
 			-- Change the default way of opening neogit
-			kind = "auto",
+			kind = "split",
 			-- Floating window style
 			floating = {
 				relative = "editor",

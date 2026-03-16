@@ -22,9 +22,9 @@ zstyle ':completion:*' squeeze-slashes true
 # ─── VI Mode ──────────────────────────────────────────────────────────────────
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
-echo -ne '\e[1 q'
-function zle-keymap-select { echo -ne '\e[1 q'; }
-zle -N zle-keymap-select
+
+# Cursor shape: \e[2 q for block, and \e[6 q for line
+ echo -ne '\e[2 q'
 
 # ─── Keybindings ──────────────────────────────────────────────────────────────
 bindkey '^D' undefined-key
@@ -33,6 +33,22 @@ bindkey -s '^N' 'nvim\n'
 bindkey '^[[1;5C' forward-word
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# Fix backspace and Ctrl-W in vi insert mode
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+
+# Fix Home/End keys in both vi modes
+bindkey -M viins '^[[H' beginning-of-line
+bindkey -M viins '^[[F' end-of-line
+bindkey -M vicmd '^[[H' beginning-of-line
+bindkey -M vicmd '^[[F' end-of-line
+
+# ─── Edit Command Line in EDITOR ──────────────────────────────────────────────
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey "^[v" edit-command-line
 
 # ─── Environment ──────────────────────────────────────────────────────────────
 export EDITOR=nvim
@@ -59,15 +75,12 @@ alias pdw='pwd'
 alias grep='grep --color=auto'
 alias emacs="emacsclient -c -a 'emacs'"
 alias cat="bat"
-alias v="nvim"
 alias vim="nvim"
 alias nvim.="nvim ."
 alias vim.="nvim ."
 alias c="/bin/clear"
 alias hypr="start-hyprland"
-alias _rc='g++ %.cpp -o run && ./run'
-alias _nvim='neovide &'
-alias tm='tmux-sessionizer.sh'
+alias y="/bin/yazi"
 
 # ─── Tools ────────────────────────────────────────────────────────────────────
 eval "$(fzf --zsh)"
@@ -135,9 +148,9 @@ function fish_prompt_zsh() {
     local arrow="%F{#89dceb}➜ %f"  # Sky
     local dir
     if [[ "$PWD" == "$HOME" ]]; then
-        dir="%B%F{#cba6f7}shivank%f%b"  # Mauve
+        dir="%F{#cba6f7}shivank%f"  # Mauve
     else
-        dir="%B%F{#cba6f7}$(basename "$PWD")%f%b"  # Mauve
+        dir="%F{#cba6f7}$(basename "$PWD")%f"  # Mauve
     fi
     local branch="" in_git_repo=0
     if git rev-parse --is-inside-work-tree 2>/dev/null | grep -q "true"; then
@@ -194,3 +207,14 @@ function fish_prompt_zsh() {
     PROMPT="${arrow}${dir} %F{#74c7ec}git:(%f${git_branch_part}%F{#74c7ec}) %f${git_status_symbol}"
 }
 precmd() { fish_prompt_zsh }
+
+### make yazi change directory
+function yazi() {
+    local tmp=$(mktemp -t "yazi-cwd.XXXXXX")
+    /usr/bin/yazi "$@" --cwd-file="$tmp"
+    if cwd=$(cat -- "$tmp") && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+

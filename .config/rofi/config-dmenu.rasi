@@ -1,37 +1,14 @@
 /* -----------------------------------------------
- * Rofi Configuration
- * Mode    : run (commands)
- * Theme   : Dark
- * Layout  : Grid (vertical + horizontal), centered
+ * Rofi Configuration —  / directory picker
  * ----------------------------------------------- */
-
 configuration {
     modi:                   "run";
     lines:                  15;
-    font:                   "SF Pro Display 10" ;
-
-    /* Search behavior */
+    font:                   "SF Pro Display 10";
     case-sensitive:         false;
-    matching:               "fuzzy";
-
-    /* Terminal fallback */
-    terminal:               "kitty";
-
-    /* Display */
     show-icons:             false;
-    icon-theme:             "Papirus";
-    display-run:            " Run";
-
-    /* Misc */
     sidebar-mode:           false;
-    hover-select:           false;
-    scroll-method:          0;
-    window-format:          "{w}    {c}    {t}";
 }
-
-/* -----------------------------------------------
- * Theme — Dark (black / grey)
- * ----------------------------------------------- */
 
 * {
     bg0:        #0e0e0e;
@@ -43,7 +20,6 @@ configuration {
     accent:     #6e6e6e;
     urgent:     #cc4444;
     border:     #333333;
-
     background-color:   transparent;
     text-color:         @fg0;
 }
@@ -55,8 +31,6 @@ window {
     border-radius:      5px;
     width:              800px;
     padding:            0px;
-    x-offset:           0;
-    y-offset:           0;
     location:           center;
     anchor:             center;
 }
@@ -67,8 +41,6 @@ mainbox {
     spacing:            0px;
     padding:            9px;
 }
-
-/* ---- Input bar ---- */
 
 inputbar {
     background-color:   @bg1;
@@ -88,31 +60,24 @@ prompt {
 entry {
     background-color:   transparent;
     text-color:         @fg0;
-    placeholder:        "type a command…";
+    placeholder:        "search dirs…";
     placeholder-color:  @fg1;
     cursor:             text;
 }
 
-/* ---- Results grid ---- */
-
 listview {
     background-color:   transparent;
-    columns:            5;
     lines:              15;
     scrollbar:          false;
     fixed-height:       true;
-    fixed-columns:      true;
     spacing:            4px;
-    cycle:              true;
 }
 
 element {
     background-color:   transparent;
     border-radius:      6px;
     padding:            8px 10px;
-    margin:            4px 0px;
-    orientation:        vertical;
-    spacing:            6px;
+    margin:             4px 0px;
 }
 
 element normal.normal {
@@ -130,23 +95,10 @@ element alternate.normal {
     text-color:         @fg0;
 }
 
-element urgent.normal,
-element normal.urgent {
-    text-color:         @urgent;
-}
-
-element-icon {
-    background-color:   transparent;
-    size:               32px;
-    horizontal-align:   0.5;
-}
-
 element-text {
     background-color:   transparent;
     text-color:         inherit;
 }
-
-/* ---- Message / error area ---- */
 
 message {
     background-color:   @bg1;

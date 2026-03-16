@@ -268,18 +268,17 @@ return {
 				},
 			})
 
-			-- local variants = {
-			-- 	"carbonfox",
-			-- 	"nordfox",
-			-- 	"nightfox",
-			-- 	"terafox",
-			-- 	"duskfox",
-			-- }
+			 local variants = {
+			 	"carbonfox",
+			 	"nordfox",
+			 	"nightfox",
+			 	"terafox",
+			 	"duskfox",
+			 }
 
-			-- math.randomseed(os.time())
-			-- local choice = variants[math.random(#variants)]
-			--
-			-- vim.cmd.colorscheme(choice)
+			 math.randomseed(os.time())
+			 local choice = variants[math.random(#variants)]
+			 vim.cmd.colorscheme(choice)
 		end,
 	},
 }

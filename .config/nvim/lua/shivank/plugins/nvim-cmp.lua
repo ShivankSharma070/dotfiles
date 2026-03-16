@@ -28,7 +28,6 @@ return {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
-
 			completion = {
 				completeopt = "menu,menuone,preview", -- noselect option can also be added into the list
 			},
@@ -89,11 +88,11 @@ return {
 				}),
 			},
 
-			-- experimental = {
-			-- 	ghost_text = {
-			-- 		hl_group = "CmpGhostText",
-			-- 	},
-			-- },
+			 -- experimental = {
+			 -- 	ghost_text = {
+			 -- 		hl_group = "CmpGhostText",
+			 -- 	},
+			 -- },
 		})
 	end,
 }

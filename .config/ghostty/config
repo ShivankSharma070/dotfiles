@@ -13,12 +13,13 @@ clipboard-write = allow
 copy-on-select = true
 mouse-hide-while-typing = true
 font-size = 10
+#
 # theme = /home/shivank/.config/ghostty/ghostty-theme
 # theme = /usr/share/ghostty/themes/Doom One
-# theme = Catppuccin Macchiato
+theme = Catppuccin Macchiato
 # theme = Solarized Dark - Patched
 # theme = TokyoNight Storm
-background-opacity = 0.93
+background-opacity = 1
 background-blur-radius = 100
 
 background = #000000

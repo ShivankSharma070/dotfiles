@@ -22,6 +22,7 @@ return {
 				desc = "Toggle Zen Mode",
 			},
 
+
 			-- Scratch buffer (persistance)
 			{
 				"<leader>.",

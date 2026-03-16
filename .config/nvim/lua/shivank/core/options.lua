@@ -41,11 +41,11 @@ opt.undofile = true
 -- opt.textwidth = 80
 -- opt.wrap = true
 opt.colorcolumn = "80"
- opt.guicursor = {
-    "n-v-c-sm:block-nCursor",
-    "i-ci-ve:block-iCursor",
-    "r-cr-o:block-rCursor",
-  }
+opt.guicursor = {
+   "n-v-c-sm:block-nCursor",
+   "i-ci-ve:block-iCursor",
+   "r-cr-o:block-rCursor",
+ }
 -- Above option applies the setting to ALL file types, if you want to apply it
 -- to specific files only
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -58,16 +58,16 @@ opt.colorcolumn = "80"
 
 -- Setting for neovide
 if vim.g.neovide then
-	vim.o.guifont = "JetBrains Mono Light:h10:w0.3"
+	vim.o.guifont = "JetBrains Mono Light:h10"
 	--	vim.o.guifont = "IBM Plex Mono:h12:w0.3"
 	vim.opt.linespace = 0
 	vim.opt.cursorline = false
 	vim.opt.cmdheight = 1
 	vim.opt.guicursor = {
-    "n-v-c-sm:block-nCursor",
-    "i-ci-ve:block-iCursor",
-    "r-cr-o:block-rCursor",
-  }
+		"n-v-c-sm:block-nCursor",
+		"i-ci-ve:block-iCursor",
+		"r-cr-o:block-rCursor",
+	}
 	vim.g.neovide_scale_factor = 1
 	vim.g.neovide_padding_top = 1
 	vim.g.neovide_floating_corner_radius = 0.8
@@ -76,8 +76,8 @@ if vim.g.neovide then
 	vim.g.neovide_padding_left = 0
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_refresh_rate = 120
-    vim.g.neovide_cursor_animation_length = 0.05
-    vim.g.neovide_scroll_animation_length = 0.1
+	vim.g.neovide_cursor_animation_length = 0
+	vim.g.neovide_scroll_animation_length = 0
 	vim.api.nvim_set_keymap(
 		"n",
 		"<C-+>",

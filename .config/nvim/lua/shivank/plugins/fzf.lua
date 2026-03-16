@@ -6,9 +6,9 @@ return {
 	dependencies = { "echasnovski/mini.icons" },
 	opts = {
 		defaults = {
-			git_icons = false,
-			file_icons = false,
-			color_icons = false,
+			git_icons = true,
+			file_icons = true,
+			color_icons = true,
 		},
 		winopts = {
 			fullscreen = false, -- start fullscreen?
@@ -16,6 +16,26 @@ return {
 	},
 
 	keys = {
+		{
+			"<leader>fgb",
+			function()
+				require("fzf-lua").git_branches()
+			end,
+		},
+		{
+			"<leader>fgf",
+			function()
+				require("fzf-lua").git_bcommits()
+			end,
+			desc = "Git Commits",
+		},
+		{
+			"<leader>fgl",
+			function()
+				require("fzf-lua").git_commits()
+			end,
+			desc = "Git Commits",
+		},
 		{
 			"<leader>e",
 			function()

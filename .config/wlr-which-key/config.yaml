@@ -29,27 +29,27 @@ inhibit_compositor_keyboard_shortcuts: true
 auto_kbd_layout: true
 
 menu:
-  - key: "r"
-    desc: rofi
-    submenu:
-      - key: "r"
-        desc: App Launcher
-        cmd: launcher_app.sh
-      - key: "w"
-        desc: Windows
-        cmd: /home/shivank/.config/rofi/scripts/launcher_t4
-      - key: "f"
-        desc: File launcher 
-        cmd: launcher_file.sh
-      - key: "s"
-        desc: Screenshot
-        cmd: /home/shivank/.config/rofi/applets/bin/screenshot.sh
-  - key: "e"
-    desc: Editor
-    submenu:
-      - key: "e"
-        desc: Zed
-        cmd: zeditor
-      - key: "f"
-        desc: Neovide Launcher
-        cmd: neovide_launcher.sh
+    - key: "r"
+      desc: rofi
+      submenu:
+          - key: "r"
+            desc: App Launcher
+            cmd: rofi -show drun
+          - key: "w"
+            desc: Windows
+            cmd: rofi -show window -theme ~/.config/rofi/config-dmenu.rasi
+          - key: "f"
+            desc: File launcher
+            cmd: launcher_file.sh
+          - key: "s"
+            desc: Screenshot
+            cmd: flameshot gui
+    - key: "e"
+      desc: Editor
+      submenu:
+          - key: "e"
+            desc: Zed
+            cmd: zeditor
+          - key: "f"
+            desc: Neovide Launcher
+            cmd: neovide_launcher.sh
