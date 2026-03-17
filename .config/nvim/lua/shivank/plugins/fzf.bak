@@ -16,6 +16,12 @@ return {
 	},
 
 	keys = {
+        {
+            "<leader>fc",
+            function ()
+                require("fzf-lua").colorschemes()
+            end,
+        },
 		{
 			"<leader>fgb",
 			function()
@@ -23,7 +29,7 @@ return {
 			end,
 		},
 		{
-			"<leader>fgf",
+		"<leader>fgf",
 			function()
 				require("fzf-lua").git_bcommits()
 			end,

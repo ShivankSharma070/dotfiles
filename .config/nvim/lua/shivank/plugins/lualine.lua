@@ -120,7 +120,7 @@ return {
 						"filename",
 						file_status = true, -- Displays file status (readonly status, modified status)
 						newfile_status = false, -- Display new file status (new file means no write after created)
-						path = 0, -- 0: Just the filename
+						path = 3, -- 0: Just the filename
 						-- 1: Relative path
 						-- 2: Absolute path
 						-- 3: Absolute path, with tilde as the home directory
@@ -137,6 +137,7 @@ return {
 					},
 				},
 				lualine_x = {
+                    { "searchcount" },
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates, -- show only when a update is available

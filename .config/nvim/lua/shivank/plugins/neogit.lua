@@ -10,7 +10,9 @@ return {
 	},
 	cmd = "Neogit",
 	keys = {
-		{ "<leader>gg", "<cmd>G<cr>", desc = "Show Neogit UI" },
+		{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+		{ "<leader>gb", "<cmd>Neogit branch<cr>", desc = "Show Neogit UI" },
+		{ "<leader>gf", "<cmd>NeogitLogCurrent<cr>", desc = "Show " },
 		{ "<leader>gl", "<cmd>Neogit log<cr>", desc = "Neogit Log view" },
 	},
 	config = function()
@@ -133,7 +135,8 @@ return {
 			-- Each Integration is auto-detected through plugin presence, however, it can be disabled by setting to `false`
 			integrations = {
 				codediff = true,
-				fzf_lua = true,
+				-- fzf_lua = true,
+                snacks = true,
 			},
 			-- Which diff viewer to use. nil = auto-detect (tries diffview first, then codediff).
 			-- Can be "diffview" or "codediff".

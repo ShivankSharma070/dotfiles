@@ -3,72 +3,52 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-    keys = {
 
+		-- -----------------------------------------------------------------------
+		-- Keymaps
+		-- -----------------------------------------------------------------------
+		keys = {
+
+			-- ── Files ────────────────────────────────────────────────────────────
+			{
+				"<leader>ff",
+				function()
+					Snacks.picker.files({
+						hidden = true,
+						filter = { cwd = true },
+						follow = true,
+						exclude = { "node_modules", ".local", ".cache", ".git", "go" },
+					})
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader>fr",
+				function()
+					Snacks.picker.recent({
+						follow = true,
+						exclude = { "node_modules", ".local", ".cache", ".git", "go" },
+					})
+				end,
+				desc = "Recent Files",
+			},
+			{
+				"<leader>fp",
+				function()
+					Snacks.picker.files({
+						cwd = vim.fn.stdpath("config"),
+						hidden = true,
+					})
+				end,
+				desc = "Find Neovim Config Files",
+			},
 			{
 				"<leader>fz",
 				function()
 					Snacks.picker.treesitter()
 				end,
-				desc = "Lists function names, variables from treesitter",
+				desc = "Treesitter Symbols (functions, vars…)",
 			},
-
-			-- Zen Mode On/Off
-			{
-				"<leader>z",
-				function()
-					Snacks.zen()
-				end,
-				desc = "Toggle Zen Mode",
-			},
-
-
-			-- Scratch buffer (persistance)
-			{
-				"<leader>.",
-				function()
-					Snacks.scratch()
-				end,
-				desc = "Toggle Scratch Buffer",
-			},
-
-			-- Select Scratch buffer
-			{
-				"<leader>S",
-				function()
-					Snacks.scratch.select()
-				end,
-				desc = "Select Scratch Buffer",
-			},
-
-			-- Delete All Buffers
-			{
-				"<leader>Bk",
-				function()
-					Snacks.bufdelete.all()
-				end,
-				desc = "Delete All Buffer",
-			},
-
-			-- Delete all other buffer
-			{
-				"<leader>bK",
-				function()
-					Snacks.bufdelete.other()
-				end,
-				desc = "Delete Other Buffer",
-			},
-
-			-- Delete Current Cuffer
-			{
-				"<leader>bk",
-				function()
-					Snacks.bufdelete()
-				end,
-				desc = "Delete Buffer",
-			},
-
-			-- Rename current file
 			{
 				"<leader>fR",
 				function()
@@ -77,7 +57,25 @@ return {
 				desc = "Rename File",
 			},
 
-			-- Navigate my buffers
+			-- ── Search / Grep ─────────────────────────────────────────────────
+			{
+				"<leader>fs",
+				function()
+					Snacks.picker.grep()
+				end,
+				desc = "Live Grep",
+			},
+			{
+				"<leader>ft",
+				function()
+					Snacks.picker.todo_comments({
+						keywords = { "BUG", "TODO", "HACK", "PERF", "NOTE", "FIX", "FIXME" },
+					})
+				end,
+				desc = "TODO / Notes",
+			},
+
+			-- ── Buffers ───────────────────────────────────────────────────────
 			{
 				"<leader>,",
 				function()
@@ -105,28 +103,162 @@ return {
 						-- layout = "vertical",
 					})
 				end,
-				desc = "[P]Snacks picker buffers",
+				desc = "Buffers",
+			},
+			{
+				"<leader>Bk",
+				function()
+					Snacks.bufdelete.all()
+				end,
+				desc = "Delete All Buffers",
+			},
+			{
+				"<leader>bK",
+				function()
+					Snacks.bufdelete.other()
+				end,
+				desc = "Delete Other Buffers",
+			},
+			{
+				"<leader>bk",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "Delete Current Buffer",
 			},
 
-			-- Show all Register
+			-- ── LSP ───────────────────────────────────────────────────────────
+			{
+				"<leader>e",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				desc = "LSP Document Symbols",
+			},
+			{
+				"<leader>fe",
+				function()
+					Snacks.picker.lsp_workspace_symbols()
+				end,
+				desc = "LSP Workspace Symbols",
+			},
+			{
+				"<leader>fd",
+				function()
+					Snacks.picker.diagnostics()
+				end,
+				desc = "LSP Diagnostics (workspace)",
+			},
+
+			-- ── Git ───────────────────────────────────────────────────────────
+			{
+				"<leader>fgs",
+				function()
+					Snacks.picker.git_status()
+				end,
+				desc = "Git Status",
+			},
+			{
+				"<leader>fgf",
+				function()
+					Snacks.picker.git_log_file({
+						confirm = function(picker, item)
+							if not item then
+								return
+							end
+							picker:close()
+							vim.fn.setreg("+", item.commit) -- copy to system clipboard
+							vim.fn.setreg('"', item.commit) -- copy to default register
+							vim.cmd("Gsplit" .. item.commit) -- open the commit with fugitive
+							Snacks.notify.info("Copied: " .. item.commit)
+						end,
+					})
+				end,
+			},
+			{
+				"<leader>fgl",
+				function()
+					Snacks.picker.git_log({
+						confirm = function(picker, item)
+							if not item then
+								return
+							end
+							picker:close()
+							vim.fn.setreg("+", item.commit) -- copy to system clipboard
+							vim.fn.setreg('"', item.commit) -- copy to default register
+							vim.cmd("Gsplit" .. item.commit) -- open the commit with fugitive
+							Snacks.notify.info("Copied: " .. item.commit)
+						end,
+					})
+				end,
+			},
+
+			-- ── Misc pickers ──────────────────────────────────────────────────
+			{
+				"<leader>fc",
+				function()
+					Snacks.picker.colorschemes()
+				end,
+				desc = "Colorschemes",
+			},
 			{
 				"<leader>yy",
 				function()
 					Snacks.picker.registers()
 				end,
-				desc = "Show all Possible commands",
+				desc = "Registers",
 			},
-
-			-- Show all possible command
 			{
 				"<M-x>",
 				function()
 					Snacks.picker.commands()
 				end,
-				desc = "Show all Possible commands",
+				desc = "Commands",
 			},
 
-			-- Terminal
+			-- ── UI toggles ────────────────────────────────────────────────────
+			{
+				"<leader>z",
+				function()
+					Snacks.zen()
+				end,
+				desc = "Toggle Zen Mode",
+			},
+
+			-- ── Scratch buffers ───────────────────────────────────────────────
+			{
+				"<leader>.",
+				function()
+					Snacks.scratch()
+				end,
+				desc = "Toggle Scratch Buffer",
+			},
+			{
+				"<leader>S",
+				function()
+					Snacks.scratch.select()
+				end,
+				desc = "Select Scratch Buffer",
+			},
+
+			-- ── Notifications ───────────────────────────────────────────────
+			{
+				"<leader>nd",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Dismiss Notifications",
+			},
+
+			{
+				"<leader>nn",
+				function()
+					Snacks.picker.notifications()
+				end,
+				desc = "Notification History",
+			},
+
+			-- ── Terminal ──────────────────────────────────────────────────────
 			{
 				"<leader>ot",
 				function()
@@ -135,7 +267,7 @@ return {
 				desc = "Toggle Terminal",
 			},
 
-			-- Next word reference
+			-- ── Word navigation ───────────────────────────────────────────────
 			{
 				"]]",
 				function()
@@ -144,8 +276,6 @@ return {
 				desc = "Next Reference",
 				mode = { "n", "t" },
 			},
-
-			-- Previous word reference
 			{
 				"[[",
 				function()
@@ -156,109 +286,89 @@ return {
 			},
 		},
 
+		-- -----------------------------------------------------------------------
+		-- Options
+		-- -----------------------------------------------------------------------
 		---@type snacks.Config
 		opts = {
+
+			-- ── Notifier ────────────────────────────────────────────────────────
 			notifier = {
-				enabled = false,
-				top_down = true, -- place notifications from top to bottom
+				style = "fancy",
+				enabled = true,
+				top_down = true,
 			},
 
+			-- ── Indent guides ────────────────────────────────────────────────
 			---@class snacks.indent.Config
-			---@field enabled? boolean
 			indent = {
-				priority = 1,
 				enabled = true,
+				priority = 1,
 				char = "┆",
 				only_scope = true,
 				only_current = true,
 			},
 
-	-- 		dashboard = {
-	-- 			preset = {
-	-- 				keys = {
-	-- 					{
-	-- 						icon = " ",
-	-- 						key = "f",
-	-- 						desc = "Find File",
-	-- 						action = ":lua Snacks.dashboard.pick('files')",
-	-- 					},
-	-- 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-	-- 					{
-	-- 						icon = " ",
-	-- 						key = "g",
-	-- 						desc = "Find Text",
-	-- 						action = ":lua Snacks.dashboard.pick('live_grep')",
-	-- 					},
-	-- 					{
-	-- 						icon = " ",
-	-- 						key = "r",
-	-- 						desc = "Recent Files",
-	-- 						action = ":lua Snacks.dashboard.pick('oldfiles')",
-	-- 					},
-	-- 					{
-	-- 						icon = " ",
-	-- 						key = "c",
-	-- 						desc = "Config",
-	-- 						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-	-- 					},
-	-- 					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
-	-- 					-- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-	-- 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-	-- 				},
-	-- 				header = [[
- --                                                                       
- --       ████ ██████           █████      ██                     
- --      ███████████             █████                             
- --      █████████ ███████████████████ ███   ███████████   
- --     █████████  ███    █████████████ █████ ██████████████   
- --    █████████ ██████████ █████████ █████ █████ ████ █████   
- --  ███████████ ███    ███ █████████ █████ █████ ████ █████  
- -- ██████  █████████████████████ ████ █████ █████ ████ ██████ 
- --                                                                       
- --          ]],
-	-- 			},
-	-- 		},
+			-- ── Dashboard (commented out — uncomment to enable) ─────────────
+			-- dashboard = {
+			-- 	preset = {
+			-- 		keys = {
+			-- 			{
+			-- 				icon = " ",
+			-- 				key = "f",
+			-- 				desc = "Find File",
+			-- 				action = ":lua Snacks.dashboard.pick('files')",
+			-- 			},
+			-- 			{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+			-- 			{
+			-- 				icon = " ",
+			-- 				key = "g",
+			-- 				desc = "Find Text",
+			-- 				action = ":lua Snacks.dashboard.pick('live_grep')",
+			-- 			},
+			-- 			{
+			-- 				icon = " ",
+			-- 				key = "r",
+			-- 				desc = "Recent Files",
+			-- 				action = ":lua Snacks.dashboard.pick('oldfiles')",
+			-- 			},
+			-- 			{
+			-- 				icon = " ",
+			-- 				key = "c",
+			-- 				desc = "Config",
+			-- 				action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+			-- 			},
+			-- 			{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+			-- 			-- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+			-- 			{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+			-- 		},
+			-- 		header = [[
+			--
+			--       ████ ██████           █████      ██
+			--      ███████████             █████ 
+			--      █████████ ███████████████████ ███   ███████████
+			--     █████████  ███    █████████████ █████ ██████████████
+			--    █████████ ██████████ █████████ █████ █████ ████ █████
+			--  ███████████ ███    ███ █████████ █████ █████ ████ █████
+			-- ██████  █████████████████████ ████ █████ █████ ████ ██████
+			--
+			-- 	]],
+			-- 	},
+			-- },
 
+			-- ── Picker ──────────────────────────────────────────────────────
 			picker = {
-				-- My ~/github/dotfiles-latest/neovim/lazyvim/lua/config/keymaps.lua
-				-- file was always showing at the top, I needed a way to decrease its
-				-- score, in frecency you could use :FrecencyDelete to delete a file
-				-- from the database, here you can decrease it's score
-				transform = function(item)
-					if not item.file then
-						return item
-					end
-					-- Demote the "lazyvim" keymaps file:
-					if item.file:match("lazyvim/lua/config/keymaps%.lua") then
-						item.score_add = (item.score_add or 0) - 30
-					end
-					-- Boost the "neobean" keymaps file:
-					-- if item.file:match("neobean/lua/config/keymaps%.lua") then
-					--   item.score_add = (item.score_add or 0) + 100
-					-- end
-					return item
-				end,
-				-- In case you want to make sure that the score manipulation above works
-				-- or if you want to check the score of each file
+				ui_select = true,
 				debug = {
 					scores = true, -- show scores in the list
 				},
-				-- I like the "ivy" layout, so I set it as the default globaly, you can
-				-- still override it in different keymaps
 				layout = {
-					preset = "ivy",
+					preset = "vertical",
 					-- When reaching the bottom of the results in the picker, I don't want
 					-- it to cycle and go back to the top
 					cycle = false,
 				},
 				layouts = {
-					-- I wanted to modify the ivy layout height and preview pane width,
-					-- this is the only way I was able to do it
-					-- NOTE: I don't think this is the right way as I'm declaring all the
-					-- other values below, if you know a better way, let me know
-					--
-					-- Then call this layout in the keymaps above
-					-- got example from here
 					-- https://github.com/folke/snacks.nvim/discussions/468
 					ivy = {
 						layout = {
@@ -278,26 +388,39 @@ return {
 							},
 						},
 					},
-					-- I wanted to modify the layout width
-					--
 					vertical = {
 						layout = {
+							box = "horizontal",
 							backdrop = false,
 							width = 0.8,
-							min_width = 80,
-							height = 0.8,
-							min_height = 30,
-							box = "vertical",
-							border = "rounded",
-							title = "{title} {live} {flags}",
-							title_pos = "center",
-							{ win = "input", height = 1, border = "bottom" },
-							{ win = "list", border = "none" },
-							{ win = "preview", title = "{preview}", height = 0.4, border = "top" },
+							height = 0.9,
+							border = "none",
+							{
+								box = "vertical",
+								{
+									win = "input",
+									height = 1,
+									border = true,
+									title = "{title} {live} {flags}",
+									title_pos = "center",
+								},
+								{ win = "list", title = " Results ", title_pos = "center", border = true },
+							},
+							{
+								win = "preview",
+								title = "{preview:Preview}",
+								width = 0.5,
+								border = true,
+								title_pos = "center",
+							},
 						},
 					},
 				},
+
 				matcher = {
+					fuzzy = true,
+					smartcase = true,
+					filename_bonus = true,
 					frecency = true,
 				},
 				win = {
@@ -307,30 +430,37 @@ return {
 							-- add the following keymap to your config
 							["<Esc>"] = { "close", mode = { "n", "i" } },
 							-- I'm used to scrolling like this in LazyGit
-							["J"] = { "preview_scroll_down", mode = { "i", "n" } },
-							["K"] = { "preview_scroll_up", mode = { "i", "n" } },
-							["H"] = { "preview_scroll_left", mode = { "i", "n" } },
-							["L"] = { "preview_scroll_right", mode = { "i", "n" } },
+							["<PageDown>"] = { "preview_scroll_down", mode = { "i", "n" } },
+							["<PageUp>"] = { "preview_scroll_up", mode = { "i", "n" } },
+							["<C-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
+							["<C-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
+							["<C-h>"] = { "preview_scroll_left", mode = { "i", "n" } },
+							["<C-l>"] = { "preview_scroll_right", mode = { "i", "n" } },
 						},
 					},
 				},
 			},
 		},
 
+		-- -----------------------------------------------------------------------
+		-- Init: runs after VeryLazy; sets up globals + toggle mappings
+		-- -----------------------------------------------------------------------
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
 				callback = function()
-					-- Setup some globals for debugging (lazy-loaded)
+					-- Global debug helpers (lazy-loaded, no startup cost)
 					_G.dd = function(...)
 						Snacks.debug.inspect(...)
 					end
 					_G.bt = function()
 						Snacks.debug.backtrace()
 					end
-					vim.print = _G.dd -- Override print to use snacks for `:=` command
+					-- Override `:=` to use snacks pretty-printer
+					vim.print = _G.dd
 
-					-- Create some toggle mappings
+					Snacks.input.enable() -- replaces dressing's input
+					-- ── Toggle mappings ────────────────────────────────────────
 					Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>os")
 					Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>ow")
 					Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>oL")

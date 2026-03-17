@@ -32,6 +32,7 @@ opt.cmdheight = 0
 opt.laststatus = 3
 opt.scrolloff = 10
 opt.shell = "fish"
+vim.o.winborder = "rounded"
 opt.smarttab = true
 opt.breakindent = true
 opt.path:append({ "**" }) -- Finding files - Search down into subfolders
@@ -41,11 +42,11 @@ opt.undofile = true
 -- opt.textwidth = 80
 -- opt.wrap = true
 opt.colorcolumn = "80"
-opt.guicursor = {
-   "n-v-c-sm:block-nCursor",
-   "i-ci-ve:block-iCursor",
-   "r-cr-o:block-rCursor",
- }
+-- opt.guicursor = {
+--    "n-v-c-sm:block-nCursor",
+--    "i-ci-ve:block-iCursor",
+--    "r-cr-o:block-rCursor",
+--  }
 -- Above option applies the setting to ALL file types, if you want to apply it
 -- to specific files only
 -- vim.api.nvim_create_autocmd("FileType", {

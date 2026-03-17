@@ -54,7 +54,7 @@ keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) --
 keymap.set("n", "<leader>w-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
-keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
+-- keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
 keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Start Oil in current working directory." })
 vim.keymap.set('n', '<leader>tf', '<cmd>GoTestFunc -v<cr>', opts)
 
