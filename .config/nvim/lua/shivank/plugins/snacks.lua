@@ -3,7 +3,6 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-
 		-- -----------------------------------------------------------------------
 		-- Keymaps
 		-- -----------------------------------------------------------------------
@@ -17,7 +16,7 @@ return {
 						hidden = true,
 						filter = { cwd = true },
 						follow = true,
-						exclude = { "node_modules", ".local", ".cache", ".git", "go" },
+						exclude = { "vendor", "node_modules", ".local", ".cache", ".git", "go" },
 					})
 				end,
 				desc = "Find Files",
@@ -27,7 +26,7 @@ return {
 				function()
 					Snacks.picker.recent({
 						follow = true,
-						exclude = { "node_modules", ".local", ".cache", ".git", "go" },
+						exclude = { "vendor", "node_modules", ".local", ".cache", ".git", "go" },
 					})
 				end,
 				desc = "Recent Files",
@@ -59,9 +58,18 @@ return {
 
 			-- ── Search / Grep ─────────────────────────────────────────────────
 			{
+				"<leader>fl",
+				function()
+					Snacks.picker.lines()
+				end,
+				desc = "Find buffer lines",
+			},
+			{
 				"<leader>fs",
 				function()
-					Snacks.picker.grep()
+					Snacks.picker.grep({
+						exclude = { "vendor", "node_modules", ".local", ".cache", ".git", "go" },
+					})
 				end,
 				desc = "Live Grep",
 			},
@@ -69,6 +77,7 @@ return {
 				"<leader>ft",
 				function()
 					Snacks.picker.todo_comments({
+						exclude = { "vendor", "node_modules", ".local", ".cache", ".git", "go" },
 						keywords = { "BUG", "TODO", "HACK", "PERF", "NOTE", "FIX", "FIXME" },
 					})
 				end,
@@ -129,6 +138,30 @@ return {
 
 			-- ── LSP ───────────────────────────────────────────────────────────
 			{
+				"gR",
+				function()
+					Snacks.picker.lsp_references()
+				end,
+				desc = "LSP References",
+			},
+
+
+			{
+				"gt",
+				function()
+					Snacks.picker.lsp_type_definitions()
+				end,
+				desc = "LSP Type definitions",
+			},
+			{
+				"gi",
+				function()
+					Snacks.picker.lsp_implementations()
+				end,
+				desc = "LSP Implementation",
+			},
+
+			{
 				"<leader>e",
 				function()
 					Snacks.picker.lsp_symbols()
@@ -138,9 +171,18 @@ return {
 			{
 				"<leader>fe",
 				function()
-					Snacks.picker.lsp_workspace_symbols()
+					Snacks.picker.lsp_workspace_symbols({
+						exclude = { "vendor", "node_modules", ".local", ".cache", ".git", "go" },
+					})
 				end,
 				desc = "LSP Workspace Symbols",
+			},
+			{
+				"<leader>fD",
+				function()
+					Snacks.picker.diagnostics_buffer()
+				end,
+				desc = "LSP Diagnostics (buffer)",
 			},
 			{
 				"<leader>fd",
@@ -291,6 +333,54 @@ return {
 		-- -----------------------------------------------------------------------
 		---@type snacks.Config
 		opts = {
+			image = { enabled = true },
+			dashboard = {
+				enabled = true,
+				sections = {
+					{
+						section = "header",
+					},
+					{ section = "startup" },
+				},
+				preset = {
+					header = [[
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠤⠤⠤⠴⠶⠶⠒⠚⠋⠉⠉⠉⠉⣷⢀⣀⡤⠤⠶⠶⠒⠛⢶⡄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡀⠀⣿⠉⠀⠀⠀⠀⠀⠀⠀⠀⢿⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣇⣾⠀⠀⠀⠀⣴⡄⢠⣿⣄⡀⣰⠏⠙⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⠶⠚⠉⠉⠙⢦⣄⣀⣀⡟⠙⠋⠁⠈⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠇⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢰⠋⢈⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣇⠀⠀⠀⠀⠀⠀⠀⠀⠠⣆⠀⠀⢿⠀⢸⡶⢿⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣤⣀⡼⠀⠀⠻⠀⠀⠙⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡖⠀⠀⠀⠀⠀⠀⠀⠀⠸⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠳⣦⡀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⣧
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠇⣿⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⠀⠀⠀⡟⢳⣄⠀⠀⠀⠀⠙⣇⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⡿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⠀⢿⡀⠀⠀⠀⢀⡞⠁⠉⠓⠀⠀⠀⠀⣯⠴⠻⣆⠀⠀⠀⠀⢻⡆⠀⠀⠀⠻⠃⠀⠀⠀⠀⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠇⠀⢸⡇⠀⠀⠀⠘⣧⠀⠖⠚⣷⠀⠀⠀⣧⠀⠀⠘⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠀⠀⠘⡇⠀⠀⠀⠀⠘⠷⣤⣠⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠇⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠀⠀⠀⠀⢸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠞⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠾⣦⠀⢸⡇⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⡤⠔⠚⠉⠀⠀⠀⠀
+⠀⠀⣴⢦⣄⠀⠀⢀⣰⠏⠀⠘⣧⣿⠀⠀⠀⠀⢠⢾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡤⠴⠶⠒⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡏⠀⠈⠛⠋⠉⢀⣴⣿⣟⢿⡏⠀⠀⢀⡴⠋⠀⣧⠀⠀⢀⣀⣠⣤⣤⠤⠴⠒⠚⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣧⢀⣴⣶⣶⡄⢾⣿⣿⡿⣸⠃⠀⢠⠞⠁⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢿⣿⣿⣿⣿⣿⠘⢿⣭⡵⠋⠀⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⠳⣬⣿⣭⠯⠖⠚⠁⠀⢀⡞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣰⠏⠀⣀⠀⠀⠀⠀⠀⢸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡼⢃⡴⠚⡿⠀⠀⠀⣤⠀⠈⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣾⠗⠋⠀⢠⡏⠀⠀⣸⠋⢷⡀⢹⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠋⠁⣄⠀⢠⡿⡇⠀⢰⡏⠀⠀⠻⣮⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠙⠛⠋⠀⡇⢠⡟⠀⠀⠀⠀⠈⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣧⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ]],
+				},
+			},
+			input = { enabled = true },
+			explorer = { enabled = true },
+			quickfile = { enabled = true },
 
 			-- ── Notifier ────────────────────────────────────────────────────────
 			notifier = {
@@ -308,53 +398,6 @@ return {
 				only_scope = true,
 				only_current = true,
 			},
-
-			-- ── Dashboard (commented out — uncomment to enable) ─────────────
-			-- dashboard = {
-			-- 	preset = {
-			-- 		keys = {
-			-- 			{
-			-- 				icon = " ",
-			-- 				key = "f",
-			-- 				desc = "Find File",
-			-- 				action = ":lua Snacks.dashboard.pick('files')",
-			-- 			},
-			-- 			{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-			-- 			{
-			-- 				icon = " ",
-			-- 				key = "g",
-			-- 				desc = "Find Text",
-			-- 				action = ":lua Snacks.dashboard.pick('live_grep')",
-			-- 			},
-			-- 			{
-			-- 				icon = " ",
-			-- 				key = "r",
-			-- 				desc = "Recent Files",
-			-- 				action = ":lua Snacks.dashboard.pick('oldfiles')",
-			-- 			},
-			-- 			{
-			-- 				icon = " ",
-			-- 				key = "c",
-			-- 				desc = "Config",
-			-- 				action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-			-- 			},
-			-- 			{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
-			-- 			-- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-			-- 			{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-			-- 		},
-			-- 		header = [[
-			--
-			--       ████ ██████           █████      ██
-			--      ███████████             █████ 
-			--      █████████ ███████████████████ ███   ███████████
-			--     █████████  ███    █████████████ █████ ██████████████
-			--    █████████ ██████████ █████████ █████ █████ ████ █████
-			--  ███████████ ███    ███ █████████ █████ █████ ████ █████
-			-- ██████  █████████████████████ ████ █████ █████ ████ ██████
-			--
-			-- 	]],
-			-- 	},
-			-- },
 
 			-- ── Picker ──────────────────────────────────────────────────────
 			picker = {

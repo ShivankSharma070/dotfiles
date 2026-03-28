@@ -1,25 +1,26 @@
-font-family = JetBrains Mono
-# font-family = IBM Plex Mono Medm
+# SmBld, ExtLt, Light, Medm, Text, Thin
+font-family = JetBrains Mono Light
+font-size = 10
 window-padding-x = 8
 window-padding-y = 6
 window-padding-balance =true 
 shell-integration-features = no-cursor
 window-inherit-working-directory = false
 cursor-style=block
-adjust-cell-height=-2
+adjust-cell-height=-1
+adjust-cell-width = 0
 confirm-close-surface = false 
 clipboard-read = allow
 clipboard-write = allow
 copy-on-select = true
 mouse-hide-while-typing = true
-font-size = 10
-#
+
 # theme = /home/shivank/.config/ghostty/ghostty-theme
 # theme = /usr/share/ghostty/themes/Doom One
 theme = Catppuccin Macchiato
 # theme = Solarized Dark - Patched
 # theme = TokyoNight Storm
-background-opacity = 1
+background-opacity = 0.93
 background-blur-radius = 100
 
 background = #000000

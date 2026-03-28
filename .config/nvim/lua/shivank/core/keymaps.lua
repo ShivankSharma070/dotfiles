@@ -1,16 +1,15 @@
 vim.g.mapleader = " "
-vim.g.mapleader= " "
+vim.g.mapleader = " "
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 ---------------------
 -- General Keymaps -------------------
 -- Greatest remap ever
--- keymap.set("v", "<leader>p", '"_dP')
-
+keymap.set("v", "<leader>p", '"_dP')
 
 -- use jk to exit insert mode and save the file
 keymap.set("i", "jK", "<ESC>", opts)
-keymap.set("i", "Jk", "<leader>p", opts)
+keymap.set("i", "Jk", "<ESC>", opts)
 keymap.set("i", "jk", "<ESC>", opts)
 keymap.set("i", "JK", "<ESC>", opts)
 
@@ -56,7 +55,7 @@ keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- 
 keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 -- keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
 keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Start Oil in current working directory." })
-vim.keymap.set('n', '<leader>tf', '<cmd>GoTestFunc -v<cr>', opts)
+vim.keymap.set("n", "<leader>tf", "<cmd>GoTestFunc -v<cr>", opts)
 
 -- Keep cursor centered while going through the search results
 vim.keymap.set("n", "n", "nzzzv")

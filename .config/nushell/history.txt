@@ -142,3 +142,16 @@ ls
 ls | sort-by "size"
 ls
 exit
+ls
+clear
+l
+ll
+ls
+clear
+ls
+clear
+ls
+nvim cable 
+ls
+exti
+exit

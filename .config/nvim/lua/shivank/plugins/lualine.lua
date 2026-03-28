@@ -29,34 +29,34 @@ return {
 		--   return count
 		-- end
 
-		local customTheme = {
-			normal = {
-				a = { fg = "#1a1b26", bg = "#89B4FA", gui = "bold" },
-				b = { fg = "#89B4FA", bg = "#24283b" },
-				c = { fg = "#a9b1d6", bg = "black" },
-			},
-			insert = {
-				a = { fg = "#1a1b26", bg = "#9ece6a", gui = "bold" },
-				b = { fg = "#9ece6a", bg = "#24283b" },
-			},
-			visual = {
-				a = { fg = "#1a1b26", bg = "#bb9af7", gui = "bold" },
-				b = { fg = "#bb9af7", bg = "#24283b" },
-			},
-			replace = {
-				a = { fg = "#1a1b26", bg = "#bb9af7", gui = "bold" },
-				b = { fg = "#89B4FA", bg = "#24283b" },
-			},
-			command = {
-				a = { fg = "#1a1b26", bg = "#e0af68", gui = "bold" },
-				b = { fg = "#e0af68", bg = "#24283b" },
-			},
-			inactive = {
-				a = { fg = "#565f89", bg = "#1f2335" },
-				b = { fg = "#565f89", bg = "#1f2335" },
-				c = { fg = "#565f89", bg = "#1f2335" },
-			},
-		}
+		-- local customTheme = {
+		-- 	normal = {
+		-- 		a = { fg = "#1a1b26", bg = "#89B4FA", gui = "bold" },
+		-- 		b = { fg = "#89B4FA", bg = "#24283b" },
+		-- 		c = { fg = "#a9b1d6", bg = "black" },
+		-- 	},
+		-- 	insert = {
+		-- 		a = { fg = "#1a1b26", bg = "#9ece6a", gui = "bold" },
+		-- 		b = { fg = "#9ece6a", bg = "#24283b" },
+		-- 	},
+		-- 	visual = {
+		-- 		a = { fg = "#1a1b26", bg = "#bb9af7", gui = "bold" },
+		-- 		b = { fg = "#bb9af7", bg = "#24283b" },
+		-- 	},
+		-- 	replace = {
+		-- 		a = { fg = "#1a1b26", bg = "#bb9af7", gui = "bold" },
+		-- 		b = { fg = "#89B4FA", bg = "#24283b" },
+		-- 	},
+		-- 	command = {
+		-- 		a = { fg = "#1a1b26", bg = "#e0af68", gui = "bold" },
+		-- 		b = { fg = "#e0af68", bg = "#24283b" },
+		-- 	},
+		-- 	inactive = {
+		-- 		a = { fg = "#565f89", bg = "#1f2335" },
+		-- 		b = { fg = "#565f89", bg = "#1f2335" },
+		-- 		c = { fg = "#565f89", bg = "#1f2335" },
+		-- 	},
+		-- }
 
 		local my_lualine_theme = {
 			normal = {
@@ -107,7 +107,7 @@ return {
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				-- theme = my_lualine_theme,
-				 theme = customTheme,
+				 -- theme = customTheme,
 			},
 
 			refresh = {

@@ -87,13 +87,14 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
 # ─── FZF ──────────────────────────────────────────────────────────────────────
-export FZF_DEFAULT_OPTS='--height 80% --border --layout=default'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules --exclude .cache --exclude go --exclude .local'
-export FZF_CTRL_T_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules --exclude .cache --exclude go --exclude .local'
-export FZF_CTRL_T_OPTS='--preview "bat --color=always {}" --bind "?:toggle-preview"'
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude .cache --exclude .local --exclude go'
-export FZF_ALT_C_OPTS='--preview "eza --icons --tree --level=1 --color=always {}" --bind "?:toggle-preview"'
-export FZF_CTRL_R_OPTS='--preview "echo {}" --preview-window=up:3 --bind "?:toggle-preview"'
+export FZF_DEFAULT_OPTS=' --style full --layout reverse --height 80% --min-height 20  --margin 5%,10% --ansi '
+export _FD_BASE='fd --hidden --follow --no-ignore-vcs --exclude .git --exclude node_modules --exclude .cache --exclude go --exclude .local --exclude __pycache__ --exclude .cargo --exclude dist --exclude build '
+export FZF_CTRL_T_COMMAND="$_FD_BASE --type f"
+export FZF_CTRL_T_OPTS=" --preview 'bat -n --color=always {}' --preview-window 'right:55%:wrap' "
+export FZF_ALT_C_COMMAND="$_FD_BASE --type d"
+export FZF_ALT_C_OPTS=" --preview 'eza --icons --tree --level=2 --color=always {}' --preview-window 'right:45%' "
+export FZF_CTRL_R_OPTS=" --preview 'echo {}' --preview-window 'up:3:wrap' --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort' "
+export FZF_DEFAULT_COMMAND="$_FD_BASE --type f"
 
 # ─── Carapace (lazy loaded — only triggers on first tab) ──────────────────────
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'

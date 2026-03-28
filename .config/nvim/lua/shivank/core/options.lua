@@ -40,13 +40,13 @@ opt.splitkeep = "cursor"
 opt.undofile = true
 -- opt.guicursor = "a:block"
 -- opt.textwidth = 80
--- opt.wrap = true
+opt.wrap = true
 opt.colorcolumn = "80"
--- opt.guicursor = {
---    "n-v-c-sm:block-nCursor",
---    "i-ci-ve:block-iCursor",
---    "r-cr-o:block-rCursor",
---  }
+opt.guicursor = {
+   "n-v-c-sm:block-nCursor",
+   "i-ci-ve:block-iCursor",
+   "r-cr-o:block-rCursor",
+ }
 -- Above option applies the setting to ALL file types, if you want to apply it
 -- to specific files only
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -78,7 +78,7 @@ if vim.g.neovide then
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_refresh_rate = 120
 	vim.g.neovide_cursor_animation_length = 0
-	vim.g.neovide_scroll_animation_length = 0
+	vim.g.neovide_scroll_animation_length = 0.2
 	vim.api.nvim_set_keymap(
 		"n",
 		"<C-+>",
