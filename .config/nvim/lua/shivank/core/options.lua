@@ -64,11 +64,12 @@ if vim.g.neovide then
 	vim.opt.linespace = 0
 	vim.opt.cursorline = false
 	vim.opt.cmdheight = 1
-	vim.opt.guicursor = {
-		"n-v-c-sm:block-nCursor",
-		"i-ci-ve:block-iCursor",
-		"r-cr-o:block-rCursor",
-	}
+    vim.opt.guicursor = "n-v-c-o:block,i-ci-ve:ver15,r-cr:hor10"
+	-- vim.opt.guicursor = {
+	-- 	"n-v-c-sm:block-nCursor",
+	-- 	"i-ci-ve:block-iCursor",
+	-- 	"r-cr-o:block-rCursor",
+	-- }
 	vim.g.neovide_scale_factor = 1
 	vim.g.neovide_padding_top = 1
 	vim.g.neovide_floating_corner_radius = 0.8

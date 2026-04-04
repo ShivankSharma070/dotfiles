@@ -30,6 +30,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^D' undefined-key
 bindkey -s '^F' 'tmux-sessionizer.sh\n'
 bindkey -s '^N' 'nvim\n'
+bindkey -s '^g' 'gh repo list --json name,url --jq ".[].url" | fzf | xargs $BROWSER --new-window\n'
 bindkey '^[[1;5C' forward-word
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -52,7 +53,8 @@ bindkey "^[v" edit-command-line
 
 # ─── Environment ──────────────────────────────────────────────────────────────
 export EDITOR=nvim
-export BROWSER=zen-browser
+export QT_QPA_PLATFORM=xcb 
+export BROWSER=brave
 export DEV_PATH="$HOME/OneDrive/dev/"
 
 path=(

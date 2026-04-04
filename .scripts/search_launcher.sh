@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-browser="zen-browser"
+browser="min-browser"
 
 options="Google
 Yt-Youtube
