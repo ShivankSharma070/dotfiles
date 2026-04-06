@@ -43,10 +43,10 @@ opt.undofile = true
 opt.wrap = true
 opt.colorcolumn = "80"
 opt.guicursor = {
-   "n-v-c-sm:block-nCursor",
-   "i-ci-ve:block-iCursor",
-   "r-cr-o:block-rCursor",
- }
+	"n-v-c-sm:block-nCursor",
+	"i-ci-ve:block-iCursor",
+	"r-cr-o:block-rCursor",
+}
 -- Above option applies the setting to ALL file types, if you want to apply it
 -- to specific files only
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -64,7 +64,7 @@ if vim.g.neovide then
 	vim.opt.linespace = 0
 	vim.opt.cursorline = false
 	vim.opt.cmdheight = 1
-    vim.opt.guicursor = "n-v-c-o:block,i-ci-ve:ver15,r-cr:hor10"
+	vim.opt.guicursor = "n-v-c-o:block,i-ci-ve:ver15,r-cr:hor10"
 	-- vim.opt.guicursor = {
 	-- 	"n-v-c-sm:block-nCursor",
 	-- 	"i-ci-ve:block-iCursor",

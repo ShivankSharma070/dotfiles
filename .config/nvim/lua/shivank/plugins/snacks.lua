@@ -73,6 +73,15 @@ return {
 				end,
 				desc = "Live Grep",
 			},
+			{
+				"<leader>ft",
+				function()
+					Snacks.picker.todo_comments({
+						exclude = { "__pycache__", "vendor", "node_modules", ".local", ".cache", ".git", "go" },
+					})
+				end,
+				desc = "TODO / Notes",
+			},
 
 			-- ── Buffers ───────────────────────────────────────────────────────
 			{

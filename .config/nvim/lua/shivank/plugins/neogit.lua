@@ -59,7 +59,7 @@ return {
 			-- Default for rename branch prompt. If not set, the current branch name is used
 			initial_branch_rename = nil,
 			-- Change the default way of opening neogit
-			kind = "split",
+			kind = "split_above_all",
 			-- Floating window style
 			floating = {
 				relative = "editor",

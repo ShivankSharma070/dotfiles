@@ -100,6 +100,7 @@ return {
             "snacks_picker_list",
             "snacks_layout_box",
             "cmp_menu",
+            "oil",
 			"snacks_win",
 		}
 
