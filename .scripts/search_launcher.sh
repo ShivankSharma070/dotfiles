@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-browser="min-browser"
+browser="brave"
 
 options="Google
 Yt-Youtube
@@ -66,4 +66,4 @@ else
     esac
 fi
 
-$browser "$url"
+$browser --new-window "$url"

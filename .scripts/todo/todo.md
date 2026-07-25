@@ -1,0 +1,8 @@
+- [ ] do microservice revision
+- [ ] read about emplace()
+- [ ] how does using map affect tc in binary tree views 
+- [ ] binary tree max sum path 
+- [ ] kth ansector leetcode
+- [ ] add comments in every video of backtracing 
+- [x] course schedule II leetcode
+- [ ] shortest path in weighted tree

@@ -1,0 +1,10 @@
+window {
+  background: rgba(17, 17, 27, 0.75);
+  border-radius: 12px;
+  padding: 16px;
+}
+label {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  color: #cdd6f4;
+}

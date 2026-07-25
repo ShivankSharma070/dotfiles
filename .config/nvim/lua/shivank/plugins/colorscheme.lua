@@ -42,7 +42,7 @@ return {
 				end,
 			})
 			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight-storm]])
+			-- vim.cmd([[colorscheme tokyonight-storm]])
 		end,
 	},
 
@@ -228,12 +228,12 @@ return {
 			dim_inactive = true, -- dims inactive windows
 			lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
 		},
-		--  config = function(_, opts)
-		--  	require("solarized-osaka").setup(opts)
-		-- -- 	if not nottosetbackground then
-		--  		vim.cmd([[colorscheme solarized-osaka]])
-		-- -- 	end
-		--  end,
+		-- config = function(_, opts)
+		-- 	require("solarized-osaka").setup(opts)
+		-- 	-- 	if not nottosetbackground then
+		-- 	vim.cmd([[colorscheme solarized-osaka]])
+		-- 	-- 	end
+		-- end,
 	},
 
 	{
@@ -268,17 +268,17 @@ return {
 				},
 			})
 
-			-- local variants = {
-			-- 	"carbonfox",
-			-- 	"nordfox",
-			-- 	"nightfox",
-			-- 	"terafox",
-			-- 	"duskfox",
-			-- }
-			--
-			-- math.randomseed(os.time())
-			-- local choice = variants[math.random(#variants)]
-			-- vim.cmd.colorscheme(choice)
+				local variants = {
+					"carbonfox",
+					"nordfox",
+					"nightfox",
+					"terafox",
+					"duskfox",
+				}
+
+			math.randomseed(os.time())
+				local choice = variants[math.random(#variants)]
+			vim.cmd.colorscheme(choice)
 		end,
 	},
 }

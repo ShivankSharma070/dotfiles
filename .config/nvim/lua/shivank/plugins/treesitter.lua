@@ -2,7 +2,9 @@
 ---@type LazySpec
 return {
 	"nvim-treesitter/nvim-treesitter",
-	dependencies = {},
+	dependencies = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+    },
 	lazy = false,
 	branch = "main",
 	build = ":TSUpdate",

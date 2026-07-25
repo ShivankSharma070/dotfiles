@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "disable_ai": true,
+    "collaboration_panel": {
+        "dock": "left",
+    },
+    "git_panel": {
+        "dock": "left",
+    },
     "vertical_scroll_margin": 10.0,
     "text_rendering_mode": "platform_default",
     "current_line_highlight": "none",
@@ -23,6 +30,13 @@
         "enabled": true,
     },
     "agent": {
+        "dock": "right",
+        "default_model": {
+            "provider": "copilot_chat",
+            "model": "gemini-3.1-pro-preview",
+            "enable_thinking": true,
+            "effort": "high",
+        },
         "button": true,
         "favorite_models": [],
         "model_parameters": [],
@@ -39,7 +53,6 @@
         "show_onboarding_banner": true,
         "show_project_items": true,
         "show_branch_name": true,
-        "show_branch_icon": false,
     },
     "terminal": {
         "button": true,
@@ -66,17 +79,18 @@
         "use_smartcase_find": true,
         "toggle_relative_line_numbers": true,
     },
-    "auto_indent": true,
+    "auto_indent": "syntax_aware",
     "project_panel": {
         "hide_root": false,
         "bold_folder_labels": true,
         "entry_spacing": "standard",
-        "dock": "right",
+        "dock": "left",
         "button": true,
         "git_status": true,
         "auto_fold_dirs": false,
     },
     "outline_panel": {
+        "dock": "left",
         "button": true,
         "git_status": false,
     },
@@ -117,11 +131,6 @@
     "selection_highlight": false,
     "cursor_shape": "bar",
     "cursor_blink": false,
-    "autosave": {
-        "after_delay": {
-            "milliseconds": 1000,
-        },
-    },
     "buffer_font_family": "JetBrains Mono",
     "show_whitespaces": "none",
     "ensure_final_newline_on_save": true,
@@ -137,13 +146,17 @@
         "trust_all_worktrees": true,
     },
     "vim_mode": true,
-    "icon_theme": "Zed (Default)",
+    "icon_theme": {
+        "mode": "dark",
+        "light": "Zed (Default)",
+        "dark": "Zed (Default)",
+    },
     "ui_font_size": 16.0,
     "buffer_font_size": 13.0,
     "theme": {
         "mode": "dark",
-        "light": "One Light",
-        "dark": "One Black",
+        "light": "Catppuccin Iced Latte (Blur) [Heavy]",
+        "dark": "Catppuccin Espresso (Blur) [Heavy]",
     },
     "show_completions_on_input": true,
     "show_signature_help_after_edits": true,

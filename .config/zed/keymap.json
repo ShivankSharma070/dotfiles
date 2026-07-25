@@ -26,11 +26,22 @@
     {
         "context": "Editor && (vim_mode == normal)",
         "bindings": {
+            // Oil equivalent (Zed's Project Panel)
+            "-": "pane::RevealInProjectPanel",
             // Start and End of line (H and L)
             "H": "vim::FirstNonWhitespace",
             "L": "vim::EndOfLine",
             "s": "vim::Search",
 
+            // Move lines
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp",
+        },
+    },
+
+    {
+        "context": "(Workspace && !Editor) || Editor && (vim_mode == normal)",
+        "bindings": {
             "space f f": "file_finder::Toggle",
             "space f s": "project_panel::NewSearchInDirectory",
             "space f e": "project_symbols::Toggle",
@@ -59,18 +70,11 @@
 
             // Select All
             "ctrl-a": "editor::SelectAll",
-            "ctrl-b": "workspace::ToggleRightDock",
+            "ctrl-b": "workspace::ToggleLeftDock",
 
             // Numbers
             "space +": "vim::Increment",
             "space -": "vim::Decrement",
-
-            // Oil equivalent (Zed's Project Panel)
-            "-": "pane::RevealInProjectPanel",
-
-            // Move lines
-            "alt-j": "editor::MoveLineDown",
-            "alt-k": "editor::MoveLineUp",
         },
     },
 
@@ -108,7 +112,7 @@
     {
         "context": "Workspace",
         "bindings": {
-            "ctrl-b": "workspace::ToggleRightDock",
+            "ctrl-b": "workspace::ToggleLeftDock",
         },
     },
     {
@@ -160,21 +164,72 @@
         },
     },
     {
-        "context": "((VimControl && !menu) || (!Editor && !Terminal))",
+        "context": "((VimControl && !menu) || Editor || Terminal)",
         "bindings": {
             "ctrl-l": "workspace::ActivatePaneRight",
-        },
-    },
-    {
-        "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-        "bindings": {
             "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
         },
     },
     {
         "context": "(( Editor && vim_mode == normal))",
         "bindings": {
             "space m p": "editor::Format",
+        },
+    },
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-j": "workspace::ToggleBottomDock",
+        },
+    },
+    {
+        "context": "FileFinder || FileFinder > Picker > Editor || FileFinder > Picker > menu",
+        "unbind": {
+            "ctrl-j": "pane::SplitDown",
+        },
+    },
+    {
+        "context": "vim_mode == literal",
+        "unbind": {
+            "ctrl-j": ["vim::Literal", ["ctrl-j", "\n"]],
+        },
+    },
+    {
+        "context": "FileFinder || FileFinder > Picker > Editor || FileFinder > Picker > menu",
+        "unbind": {
+            "ctrl-j": "pane::SplitDown",
+        },
+    },
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-j": "workspace::ToggleBottomDock",
+        },
+    },
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-j": "workspace::ToggleBottomDock",
+        },
+    },
+    {
+        "context": "FileFinder || FileFinder > Picker > Editor || FileFinder > Picker > menu",
+        "unbind": {
+            "ctrl-j": "pane::SplitDown",
+        },
+    },
+    {
+        "context": "vim_mode == literal",
+        "unbind": {
+            "ctrl-j": ["vim::Literal", ["ctrl-j", "\n"]],
+        },
+    },
+    {
+        "context": "VimControl && !menu",
+        "unbind": {
+            "ctrl-j": "vim::Down",
         },
     },
 ]

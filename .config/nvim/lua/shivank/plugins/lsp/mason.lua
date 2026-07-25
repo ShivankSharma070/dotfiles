@@ -44,6 +44,7 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
+                "golangci-lint",
 				"clang-format", -- c and cpp formatter
 			},
 		},

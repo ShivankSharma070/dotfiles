@@ -53,7 +53,6 @@ bindkey "^[v" edit-command-line
 
 # ─── Environment ──────────────────────────────────────────────────────────────
 export EDITOR=nvim
-export QT_QPA_PLATFORM=xcb 
 export BROWSER=brave
 export DEV_PATH="$HOME/OneDrive/dev/"
 

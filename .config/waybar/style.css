@@ -1,1 +1,91 @@
-/home/shivank/.config/waybar/colors/[Colored] Translucent.css
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Inter", "Ubuntu", "Noto Sans", "Cantarell", "Roboto", "Liberation Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #11121d;
+    /* Slightly deeper, truer black/blue background */
+}
+
+tooltip {
+    background: #1f2335;
+    border: 1px solid #292e42;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #c0caf5;
+    font-size: 16px;
+}
+
+menu, menuitem, menu * {
+    font-size: 16px;
+}
+
+#clock,
+#cpu,
+#temperature,
+#memory,
+#disk,
+#tray,
+#pulseaudio,
+#bluetooth,
+#custom-notification,
+#battery,
+#custom-todo,
+#custom-countdown {
+    background-color: #1f2335;
+    /* Softer Quickshell surface tint */
+    color: #c0caf5;
+    border-radius: 6px;
+    margin: 4px 2px;
+    padding: 0 10px;
+}
+
+#custom-dot {
+    color: #565f89;
+    font-size: 14px;
+    margin: 0 -4px;
+    /* Pulls adjacent modules tighter by neutralizing Waybar spacing */
+    padding: 0;
+}
+
+#clock.date {
+    margin-right: 0px;
+}
+
+#clock.time {
+    margin-left: 0px;
+}
+
+#hardware {
+    background-color: #1f2335;
+    border-radius: 6px;
+    margin: 4px 2px;
+    padding: 0 4px;
+}
+
+#hardware #cpu,
+#hardware #temperature,
+#hardware #memory,
+#hardware #disk {
+    background-color: transparent;
+    margin: 0;
+    padding: 0 6px;
+}
+
+#pulseaudio,
+#bluetooth,
+#custom-notification,
+#battery {
+    padding: 0 8px;
+}
+
+#tray {
+    padding: 0 6px;
+}

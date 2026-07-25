@@ -1,6 +1,7 @@
 ;; defsrc is still necessary
 (defcfg
   process-unmapped-keys yes
+  concurrent-tap-hold yes
   linux-dev-names-include (
       "AT Translated Set 2 keyboard"
 )
@@ -45,3 +46,6 @@
   bspc
  )
 
+(defchordsv2
+  (j k) esc 220 first-release ()
+)

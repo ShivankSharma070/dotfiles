@@ -1,38 +1,38 @@
 local M = {}
 
 function M.setup()
-  vim.cmd([[
+	vim.cmd([[
     highlight Normal guibg=none ctermbg=none
     highlight NonText guibg=none ctermbg=none
   ]])
 
-  -- Base transparency
-  vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0a0a0a" })
-  vim.api.nvim_set_hl(0, "Normal",           { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat",      { bg = "none" })
-  vim.api.nvim_set_hl(0, "FloatBorder",      { bg = "none", fg = "#2a2a2a" })
-  vim.api.nvim_set_hl(0, "Pmenu",            { bg = "none" })
-vim.api.nvim_set_hl(0, "CmpGhostText", { fg = "#3d3d3d", italic = true })
+	-- Base transparency
+	vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#0a0a0a" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#2a2a2a" })
+	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+	vim.api.nvim_set_hl(0, "CmpGhostText", { fg = "#3d3d3d", italic = true })
 
-  -- Syntax — low contrast, clean, nothing screams
-  vim.api.nvim_set_hl(0, "String",   { fg = "#A8C7FA" })                   -- soft sky
-  vim.api.nvim_set_hl(0, "Keyword",  { fg = "#F28FAD", italic = true })    -- dusty rose
-  vim.api.nvim_set_hl(0, "Function", { fg = "#C6D0F5", bold = true })      -- cool white-blue
+	-- Syntax — low contrast, clean, nothing screams
+	vim.api.nvim_set_hl(0, "String",   { fg = "#A8C7FA" })                   -- soft sky
+	vim.api.nvim_set_hl(0, "Keyword",  { fg = "#F28FAD", italic = true })    -- dusty rose
+	vim.api.nvim_set_hl(0, "Function", { fg = "#C6D0F5", bold = true })      -- cool white-blue
 
-  -- Comments — barely there, stone gray, not distracting
-  vim.api.nvim_set_hl(0, "Comment",  { fg = "#4E7A5E", italic = true })
+	-- Comments — barely there, stone gray, not distracting
+	vim.api.nvim_set_hl(0, "Comment",  { fg = "#5E5E5E", italic = true })
 
-  -- Cursor / Selection — near-invisible on black, just enough
-  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111111" })
-  vim.api.nvim_set_hl(0, "Visual",     { bg = "#1C1C1C" })
+	-- Cursor / Selection — near-invisible on black, just enough
+	vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111111" })
+	vim.api.nvim_set_hl(0, "Visual",     { bg = "#1C1C1C" })
 
-  -- Git Signs — completely fresh palette, nothing conventional
-  -- Add:    electric cyan  — clean, sharp, "new"
-  -- Change: soft lilac     — calm, neutral, "modified"
-  -- Delete: warm clay      — muted, not alarming, "gone"
-  vim.api.nvim_set_hl(0, "GitSignsAdd",    { fg = "#00C9A7" }) -- cyan-teal
-  vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#9D8FD6" }) -- soft lilac
-  vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#C7705A" }) -- warm clay
+	-- Git Signs — completely fresh palette, nothing conventional
+	-- Add:    electric cyan  — clean, sharp, "new"
+	-- Change: soft lilac     — calm, neutral, "modified"
+	-- Delete: warm clay      — muted, not alarming, "gone"
+	vim.api.nvim_set_hl(0, "GitSignsAdd",    { fg = "#00C9A7" }) -- cyan-teal
+	vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#9D8FD6" }) -- soft lilac
+	vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#C7705A" }) -- warm clay
 end
 
 return M

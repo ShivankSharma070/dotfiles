@@ -32,6 +32,9 @@ menu:
     - key: "r"
       desc: rofi
       submenu:
+          - key: "e"
+            desc: Emoji picker
+            cmd: rofi -show emoji
           - key: "r"
             desc: App Launcher
             cmd: rofi -show drun
@@ -41,6 +44,9 @@ menu:
           - key: "f"
             desc: File launcher
             cmd: launcher_file.sh
+          - key: "t"
+            desc: Todo
+            cmd: ~/.scripts/todo/waybar_todo_rofi.sh
           - key: "s"
             desc: Screenshot
             cmd: flameshot gui

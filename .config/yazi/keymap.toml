@@ -1,33 +1,35 @@
-# ~/.config/yazi/keymap.toml
-# Only additions — everything else stays as Yazi default.
-
 [mgr]
-
 prepend_keymap = [
+    # Yank paths to Wayland clipboard (wl-copy). Swap for xclip if on X11.
+    { on = "y", run = [
+          'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',
+          "yank"
+          ], desc = "Yank + copy paths to clipboard"
+    },
 
 
-# Yank paths to Wayland clipboard (wl-copy). Swap for xclip if on X11.
-  { on = "y", run = [
-      'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',
-      "yank"
-    ], desc = "Yank + copy paths to clipboard"
-  },
+    # remove the delete operation from d and 'D'
+    { on = "d", run = "noop", desc = "disabled" },
+    { on = "D", run = "noop", desc = "disabled" },
+    {on = "<Delete>", run = "remove", desc = "trash file"},
 
-  # Drop into your shell at CWD
-{on  = "M", run = "plugin mount"},
-  { on = "!", run = 'shell "$SHELL" --block', desc = "Open $SHELL here", for = "unix" },
+    {on  = "M", run = "plugin mount"},
+    # Drop into your shell at CWD
+    { on = "!", run = 'shell "$SHELL" --block', desc = "Open $SHELL here", for = "unix" },
 
-  # cd to git repo root
-  { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "cd to git root" },
-{ on = [ "g", "o" ], run = "cd ~/OneDrive", desc = "cd to OneDrive" },
-{on   = "F", run  = "plugin smart-filter", desc = "Smart filter"},
-  # Flat view with fd (max depth 3)
-  { on = [ "g", "f" ], run = 'search_do --via=fd --args="-d 3"', desc = "Flat view (fd, depth 3)" },
+    # cd to git repo root
+    { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "cd to git root" },
+    { on = [ "g", "o" ], run = "cd ~/OneDrive", desc = "cd to OneDrive" },
+    {on   = "F", run  = "plugin smart-filter", desc = "Smart filter"},
+    # Flat view with fd (max depth 3)
+    { on = [ "g", "f" ], run = 'search_do --via=fd --args="-d 3"', desc = "Flat view (fd, depth 3)" },
+
+    { on = "<Enter>", run = "plugin smart-enter", desc = "smart-enter"},
 ]
 
 [input]
 prepend_keymap = [
-  # Single Esc exits input directly without entering vi mode
-  { on = "<Esc>", run = "close", desc = "Cancel input" },
+    # Single Esc exits input directly without entering vi mode
+    # { on = "<Esc>", run = "close", desc = "Cancel input" },
 ]
 

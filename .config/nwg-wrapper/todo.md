@@ -1,0 +1,3 @@
+- [ ] Buy milk
+- [x] Push to git
+- [ ] Finish networks assignment

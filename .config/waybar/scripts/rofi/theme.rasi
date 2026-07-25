@@ -1,0 +1,83 @@
+* {
+    bg-col:  #11121d;
+    bg-col-light: #1f2335;
+    border-col: #292e42;
+    selected-col: #1f2335;
+    blue: #7aa2f7;
+    fg-col: #c0caf5;
+    fg-col2: #f7768e;
+    grey: #565f89;
+
+    font: "Inter 10";  /* Reduced size heavily for 14-inch */
+}
+
+window {
+    width: 380px;      /* Fixed compact width */
+    border-radius: 8px;
+    background-color: @bg-col;
+    border: 1px solid;
+    border-color: @border-col;
+}
+
+mainbox {
+    background-color: @bg-col;
+    padding: 8px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-col-light;
+    border-radius: 5px;
+    padding: 6px;
+    margin: 0px 0px 8px 0px;
+}
+
+prompt {
+    background-color: @blue;
+    text-color: @bg-col;
+    font: "Inter 10";
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin: 0px 8px 0px 0px;
+}
+
+entry {
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+    placeholder-color: @grey;
+    placeholder: "Type here...";
+    expand: true;
+    vertical-align: 0.5;
+}
+
+listview {
+    background-color: @bg-col;
+    columns: 1;
+    lines: 5;          /* Reduced lines to shrink overall height */
+    border: 0px;
+    spacing: 2px;
+}
+
+element {
+    background-color: @bg-col;
+    text-color: @grey;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+element selected {
+    background-color: @selected-col;
+    text-color: @fg-col;
+}
+
+/* FIX TO PREVENT UGLY DEFAULT WHITE BACKGROUNDS ON ITEMS */
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: inherit;
+}

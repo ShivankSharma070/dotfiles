@@ -5,16 +5,16 @@
   "positionY": "top",
   "layer": "overlay",
   "layer-shell": true,
-  "layer-shell-cover-screen": false,
+  "layer-shell-cover-screen": true,
   "ignore-gtk-theme": true,
 
   "control-center-layer": "top",
   "cssPriority": "user",
-  "control-center-width": 400,
-  "control-center-margin-top": 10,
-  "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
-  "control-center-margin-left": 10,
+  "control-center-width": 420,
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-right": 8,
+  "control-center-margin-left": 0,
 
   "notification-2fa-action": true,
   "notification-inline-replies": true,
@@ -22,7 +22,6 @@
   "notification-body-image-height": 200,
   "notification-body-image-width": 200,
   "notification-grouping": true,
-  "notification-window-preferred-output": "HDMI-A-1",
   "notification-window-height": -1,
 
   "timeout": 8,
@@ -34,33 +33,30 @@
   "transition-time": 200,
   "hide-on-clear": true,
   "hide-on-action": true,
+  "relative-timestamps": true,
 
   "script-fail-notify": true,
-  "scripts": {
-    "sound-script": {
-      "exec": "bash ~/.config/swaync/scripts/notify_sound.sh > /tmp/swaync-notify-sound.log",
-      "app-name": ".*google-chrome.*"
-    }
-  },
 
   "widgets": [
-    "mpris",
+    "buttons-grid",
     "volume",
+    "backlight",
+    "mpris",
     "title",
-    "inhibitors",
-    "notifications",
-    "buttons-grid"
+    "notifications"
   ],
 
   "widget-config": {
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
-      "button-text": "Clear"
+      "button-text": "Clear All"
     },
+
     "notifications": {
       "vexpand": true
     },
+
     "mpris": {
       "autohide": true,
       "loop-carousel": true,
@@ -68,67 +64,45 @@
     },
 
     "volume": {
-      "label": "",
+      "label": "󰕾",
       "show-per-app": true,
+      "show-per-app-icon": true,
+      "show-per-app-label": true,
+      "empty-list-label": "No audio streams",
       "exec": "wpctl"
     },
 
     "backlight": {
-      "label": "󰃞"
+      "label": "󰃟"
     },
-    "inhibitors": {
-      "text": "Inhibitors",
-      "button-text": "Clear All",
-      "clear-all-button": true
-    },
+
     "buttons-grid": {
       "actions": [
         {
           "label": "󰂛",
           "command": "swaync-client -d",
           "type": "toggle",
-          "tooltip": "DND",
+          "tooltip": "Do Not Disturb",
           "update-command": "echo $(swaync-client --get-dnd)"
         },
         {
-          "label": "",
-          "command": "kitty",
-          "tooltip": "Terminal"
+          "label": "󰖩",
+          "command": "nmcli radio wifi toggle",
+          "type": "toggle",
+          "tooltip": "Wi-Fi",
+          "update-command": "nmcli radio wifi | grep -q 'enabled' && echo true || echo false"
         },
         {
-          "label": "",
-          "command": "zen-browser",
-          "tooltip": "Browser"
+          "label": "󰂯",
+          "command": "rfkill toggle bluetooth",
+          "type": "toggle",
+          "tooltip": "Bluetooth",
+          "update-command": "rfkill list bluetooth | grep -q 'Soft blocked: no' && echo true || echo false"
         },
         {
-          "label": "",
-          "command": "neovide",
-          "tooltip": "Editor"
-        },
-        {
-          "label": "",
-          "command": "connectwifi.sh",
-          "tooltip": "Lock"
-        },
-        {
-          "label": "",
-          "command": "nautilus",
-          "tooltip": "File Explorer"
-        },
-        {
-          "label": "",
-          "command": "/home/shivank/.config/rofi/scripts/launcher_t2",
-          "tooltip": "Run"
-        },
-        {
-          "label": "",
+          "label": "󰌾",
           "command": "hyprlock",
-          "tooltip": "Lock"
-        },
-        {
-          "label": "󰜉",
-          "command": "reboot",
-          "tooltip": "Reboot"
+          "tooltip": "Lock Screen"
         },
         {
           "label": "󰐥",

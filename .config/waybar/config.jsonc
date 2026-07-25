@@ -1,0 +1,144 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 22,
+    "spacing": 4,
+    "modules-left": [
+        "clock#date",
+        "clock#time",
+        "group/hardware"
+    ],
+    "modules-center": [
+        "custom/todo",
+        "custom/dot",
+        "custom/countdown"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/dot",
+        "pulseaudio",
+        "bluetooth",
+        "custom/notification",
+        "battery"
+    ],
+    "custom/todo": {
+        "format": "  {}",
+        "exec": "bash ~/.scripts/todo/waybar_todo.sh",
+        "on-double-click": "bash ~/.scripts/todo/waybar_todo.sh mark_done",
+        "on-click-right": "bash ~/.scripts/todo/waybar_todo_rofi.sh",
+        "on-click-middle": "bash ~/.scripts/todo/waybar_todo.sh middle_click",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true
+    },
+    "custom/countdown": {
+        "exec": "~/.config/waybar/scripts/countdown/countdown.sh",
+        "return-type": "json",
+        "format": " {}",
+        "interval": 3600,
+        "on-click-right": "~/.config/waybar/scripts/countdown/countdown_rofi.sh",
+        "on-scroll-up": "~/.config/waybar/scripts/countdown/countdown.sh scroll-up",
+        "on-scroll-down": "~/.config/waybar/scripts/countdown/countdown.sh scroll-down"
+    },
+    "clock#date": {
+        "format": "{:%a %d %b}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-calendar"
+    },
+    "custom/dot": {
+        "format": "·",
+        "tooltip": false
+    },
+    "clock#time": {
+        "format": "{:%H:%M<span color='#565f89'>:%S</span> <span color='#9ece6a'>%p</span>}",
+        "interval": 1,
+        "tooltip": false
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "temperature",
+            "memory",
+            "disk"
+        ]
+    },
+    "cpu": {
+        "format": "<span color='#7aa2f7'></span> <span color='#7aa2f7'>{usage}%</span>",
+        "interval": 2
+    },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": "<span color='#ff9e64'></span> <span color='#ff9e64'>{temperatureC}°</span>",
+        "interval": 2
+    },
+    "memory": {
+        "format": "<span color='#9ece6a'></span> <span color='#9ece6a'>{used:0.1f}G</span>",
+        "interval": 2
+    },
+    "disk": {
+        "format": "<span color='#bb9af7'>󰋊</span> <span color='#bb9af7'>{used}</span>",
+        "interval": 60,
+        "tooltip-format": "{used} used out of {total} on {path}"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 8
+    },
+    "pulseaudio": {
+        "format": "<span color='#7aa2f7'>{icon}</span> <span color='#7aa2f7'>{volume}%</span>",
+        "format-muted": "<span color='#565f89'></span> <span color='#7aa2f7'>MUT</span>",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "bluetooth": {
+        "format": "<span color='#7aa2f7'></span>",
+        "format-disabled": "<span color='#565f89'></span>",
+        "format-connected": "<span color='#7aa2f7'></span> <span color='#c0caf5'>{num_connections}</span>",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span color='#f7768e'>󱅫</span>",
+            "none": "<span color='#bb9af7'>󰂚</span>",
+            "dnd-notification": "<span color='#f7768e'>󱏧</span>",
+            "dnd-none": "<span color='#565f89'>󰂛</span>",
+            "inhibited-notification": "<span color='#f7768e'>󱅫</span>",
+            "inhibited-none": "<span color='#bb9af7'>󰂚</span>",
+            "dnd-inhibited-notification": "<span color='#f7768e'>󱏧</span>",
+            "dnd-inhibited-none": "<span color='#565f89'>󰂛</span>"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#9ece6a'>{icon}</span> <span color='#c0caf5'>{capacity}%</span>",
+        "format-charging": "<span color='#e0af68'></span> <span color='#c0caf5'>{capacity}%</span>",
+        "format-plugged": "<span color='#e0af68'></span> <span color='#c0caf5'>{capacity}%</span>",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+}
