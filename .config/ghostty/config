@@ -2,7 +2,7 @@
 font-family = JetBrains Mono Light
 font-size = 10
 window-padding-x = 4
-window-padding-y = 2
+window-padding-y = 4
 window-padding-balance =true 
 shell-integration-features = no-cursor
 window-inherit-working-directory = false
@@ -20,7 +20,7 @@ mouse-hide-while-typing = true
 # theme = Catppuccin Macchiato
 # theme = Solarized Dark - Patched
 theme = TokyoNight Storm
-background-opacity = 0.93
+background-opacity = 1
 background-blur-radius = 100
 
 background = #000000

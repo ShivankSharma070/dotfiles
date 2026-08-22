@@ -5,7 +5,7 @@
 -- Enable animations globally
 hl.config({
     animations = {
-        enabled = false,
+        enabled = true,
     },
 })
 

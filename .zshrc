@@ -219,4 +219,3 @@ function yazi() {
     fi
     rm -f -- "$tmp"
 }
-

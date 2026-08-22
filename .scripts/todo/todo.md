@@ -4,5 +4,5 @@
 - [ ] binary tree max sum path 
 - [ ] kth ansector leetcode
 - [ ] add comments in every video of backtracing 
-- [x] course schedule II leetcode
 - [ ] shortest path in weighted tree
+- [ ] catalan number
